@@ -1,27 +1,27 @@
 /**
- * DRIPVAULT Web Application Architecture
- * Built by 9-Year Senior Software Engineer for Teenagers & Gen-Z
- * Clean state management, modular components, persistent cart & real-time radar
+ * VYRA BY VIPUL - Web Application Architecture
+ * Built by 9-Year Senior Software Engineer for Teenagers & College Students
+ * Clean state management, modular components, persistent cart & real-time radar (INR ₹)
  */
 
 // =================================================================
-// 1. PRODUCT CATALOG DATABASE (Spec-engineered for high quality & budget)
+// 1. PRODUCT CATALOG DATABASE (Prices in Indian Rupees ₹)
 // =================================================================
 const PRODUCTS = [
   {
     id: 1,
     title: 'Acid-Wash "Overdrive" Boxy Hoodie',
     category: 'hoodies',
-    price: 34.99,
-    origPrice: 78.00,
-    discount: 55,
+    price: 1499,
+    origPrice: 3499,
+    discount: 57,
     gsm: '380 GSM Heavy Fleece',
     rating: 4.9,
     reviews: 428,
     badge: 'STEAL DEAL',
     badgeType: 'steal',
     image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80',
-    description: 'Ultra-dense 380 GSM French Terry fleece. Boxy drop-shoulder cut, double-lined hood, and anti-pill fabric that never shrinks in the washer.',
+    description: 'Ultra-dense 380 GSM French Terry fleece engineered by Vipul. Boxy drop-shoulder cut, double-lined hood, and anti-pill fabric that never shrinks in the washer.',
     specs: ['380 GSM 100% Cotton French Terry', 'Drop shoulder oversized streetwear fit', 'Pre-shrunk double washed', 'Thermal kangaroo pocket'],
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
   },
@@ -29,16 +29,16 @@ const PRODUCTS = [
     id: 2,
     title: 'Cyber-Tokyo 280 GSM Graphic Tee',
     category: 'tees',
-    price: 18.99,
-    origPrice: 42.00,
-    discount: 54,
+    price: 799,
+    origPrice: 1799,
+    discount: 55,
     gsm: '280 GSM Combed Cotton',
     rating: 4.8,
     reviews: 812,
     badge: 'BESTSELLER',
     badgeType: 'trending',
     image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',
-    description: 'Thick, non-see-through combed cotton tee with high-definition screen print that will not crack or peel after 50+ campus laundry cycles.',
+    description: 'Thick, non-see-through Indian combed cotton tee with high-definition screen print that will not crack or peel after 50+ college laundry cycles.',
     specs: ['280 GSM Heavyweight Cotton', 'High-density screenprint', 'Ribbed anti-sag collar', 'Breathable relaxed fit'],
     sizes: ['S', 'M', 'L', 'XL']
   },
@@ -46,9 +46,9 @@ const PRODUCTS = [
     id: 3,
     title: 'Tactical Multi-Pocket Parachute Cargoes',
     category: 'cargoes',
-    price: 38.50,
-    origPrice: 75.00,
-    discount: 48,
+    price: 1599,
+    origPrice: 3199,
+    discount: 50,
     gsm: 'DWR Ripstop Nylon',
     rating: 4.9,
     reviews: 310,
@@ -63,9 +63,9 @@ const PRODUCTS = [
     id: 4,
     title: 'Vintage Faded Selvedge Wide-Leg Denim',
     category: 'cargoes',
-    price: 42.00,
-    origPrice: 89.00,
-    discount: 52,
+    price: 1799,
+    origPrice: 3999,
+    discount: 55,
     gsm: '13.5 oz Raw Denim',
     rating: 4.9,
     reviews: 512,
@@ -80,16 +80,16 @@ const PRODUCTS = [
     id: 5,
     title: 'Retro Formula Varsity Bomber Jacket',
     category: 'jackets',
-    price: 49.99,
-    origPrice: 110.00,
-    discount: 54,
+    price: 2499,
+    origPrice: 5499,
+    discount: 55,
     gsm: 'Wool Blend + Vegan Leather',
     rating: 5.0,
     reviews: 198,
     badge: 'LIMITED DROP',
     badgeType: 'steal',
     image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80',
-    description: 'Quilted interior lining keeps you warm down to 40°F. Features custom Chenille embroidery patches and premium vegan leather sleeves.',
+    description: 'Quilted interior lining keeps you warm down to chilly winters. Features custom Chenille embroidery patches and premium vegan leather sleeves.',
     specs: ['Thermal quilted interior diamond quilt', 'Chenille textured patches', 'Heavy brass snap buttons', 'Custom striped ribbed cuffs'],
     sizes: ['S', 'M', 'L', 'XL']
   },
@@ -97,8 +97,8 @@ const PRODUCTS = [
     id: 6,
     title: 'Minimalist "Aura" Heavy Knit Crewneck',
     category: 'hoodies',
-    price: 29.50,
-    origPrice: 62.00,
+    price: 1299,
+    origPrice: 2699,
     discount: 52,
     gsm: '320 GSM Cotton Knit',
     rating: 4.7,
@@ -106,7 +106,7 @@ const PRODUCTS = [
     badge: 'CLEAN FIT',
     badgeType: 'quality',
     image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80',
-    description: 'The ultimate clean staple sweater. Clean silhouette, seamless tubular body construction with zero side itch and ultra-soft brushed interior.',
+    description: 'The ultimate clean staple sweater. Seamless tubular body construction with zero side itch and ultra-soft brushed interior.',
     specs: ['320 GSM Heavy loopback cotton', 'No-itch tagless collar', 'Pre-washed anti-shrink guarantee', 'Reinforced neck binding'],
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
   },
@@ -114,8 +114,8 @@ const PRODUCTS = [
     id: 7,
     title: 'Distressed "No Signal" Vintage Tee',
     category: 'tees',
-    price: 19.99,
-    origPrice: 40.00,
+    price: 849,
+    origPrice: 1699,
     discount: 50,
     gsm: '260 GSM Carbon-Wash',
     rating: 4.8,
@@ -131,8 +131,8 @@ const PRODUCTS = [
     id: 8,
     title: 'Reflective Y2K Tech Crossbody Sling',
     category: 'accessories',
-    price: 16.50,
-    origPrice: 35.00,
+    price: 699,
+    origPrice: 1499,
     discount: 53,
     gsm: '600D Cordura Nylon',
     rating: 4.8,
@@ -148,8 +148,8 @@ const PRODUCTS = [
     id: 9,
     title: 'Matte Black Water-Repellent Puffer',
     category: 'jackets',
-    price: 54.00,
-    origPrice: 125.00,
+    price: 2799,
+    origPrice: 6299,
     discount: 56,
     gsm: 'Eco-Down 700 Fill Power',
     rating: 4.9,
@@ -157,17 +157,17 @@ const PRODUCTS = [
     badge: 'SUPER STEAL',
     badgeType: 'steal',
     image: 'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80',
-    description: 'Cruelty-free 700 fill-power recycled insulation. Cloud-like warmth without bulkiness. Matte water-resistant shell withstands rain and snow.',
-    specs: ['700 Fill-power eco down', 'Matte waterproof exterior finish', 'Fleece-lined handwarmer pockets', 'Concealed storm storm hood'],
+    description: 'Cruelty-free 700 fill-power recycled insulation. Cloud-like warmth without bulkiness. Matte water-resistant shell withstands rain and winter chills.',
+    specs: ['700 Fill-power eco down', 'Matte waterproof exterior finish', 'Fleece-lined handwarmer pockets', 'Concealed storm hood'],
     sizes: ['S', 'M', 'L', 'XL']
   },
   {
     id: 10,
-    title: 'Vintage Washed Low-Profile "Drip" Cap',
+    title: 'Vintage Washed Low-Profile "VYRA" Cap',
     category: 'accessories',
-    price: 12.99,
-    origPrice: 28.00,
-    discount: 53,
+    price: 549,
+    origPrice: 1199,
+    discount: 54,
     gsm: '100% Chino Twill',
     rating: 4.7,
     reviews: 580,
@@ -180,58 +180,63 @@ const PRODUCTS = [
   }
 ];
 
+// Helper to format Indian Currency (INR ₹)
+function formatINR(val) {
+  return `₹${Math.round(val).toLocaleString('en-IN')}`;
+}
+
 // =================================================================
 // 2. COUPON DATABASE
 // =================================================================
 const COUPONS = {
-  'TEENDRIP35': { discountPercent: 35, type: 'percent', label: '35% Teen Welcome Drop', minOrder: 0 },
-  'FREEDELIVERY': { freeShipping: true, type: 'shipping', label: '100% Free Shipping', minOrder: 0 },
-  'FITSTACK15': { discountFlat: 15, type: 'flat', label: '$15 Off Multi-Fit Bonus', minOrder: 40 }
+  'VYRATEEN35': { discountPercent: 35, type: 'percent', label: '35% Teen Welcome Drop', minOrder: 0 },
+  'FREEDELIVERY': { freeShipping: true, type: 'shipping', label: '100% Free Express Delivery', minOrder: 0 },
+  'VYRA500': { discountFlat: 500, type: 'flat', label: '₹500 Off Multi-Fit Bonus', minOrder: 1999 }
 };
 
 // =================================================================
-// 3. TRACKING DATABASE (Live Simulation)
+// 3. TRACKING DATABASE (Live Simulation with Indian Couriers)
 // =================================================================
 const TRACKING_DATA = {
-  '#DV-89240': {
-    orderId: '#DV-89240',
+  '#VV-89240': {
+    orderId: '#VV-89240',
     date: 'Today, 11:20 AM',
     eta: 'Arriving Today by 5:30 PM',
-    status: 'Out For Delivery',
+    status: 'Out For Delivery in Delhi NCR',
     step: 4, // 0 to 4
-    carrier: 'Velocity Express VIP (Driver: Marcus T.)',
-    address: '428 Campus Way, Apt 3B, College Station',
+    carrier: 'BlueDart Air Express (Rider: Rahul S.)',
+    address: 'Room 204, North Campus Boys Hostel, New Delhi',
     items: [
-      { title: 'Acid-Wash "Overdrive" Boxy Hoodie', size: 'L', qty: 1, price: 34.99 },
-      { title: 'Tactical Parachute Cargoes', size: '32', qty: 1, price: 38.50 }
+      { title: 'Acid-Wash "Overdrive" Boxy Hoodie', size: 'L', qty: 1, price: 1499 },
+      { title: 'Cyber-Tokyo 280 GSM Graphic Tee', size: 'L', qty: 1, price: 799 }
     ],
-    total: '$73.49'
+    total: '₹2,298'
   },
-  '#DV-72104': {
-    orderId: '#DV-72104',
+  '#VV-72104': {
+    orderId: '#VV-72104',
     date: 'Yesterday, 3:45 PM',
     eta: 'Estimated Monday, Nov 17',
     status: 'Quality Verification Passed',
     step: 1,
-    carrier: 'DripVault QC Lab (Inspector #09)',
-    address: '810 High School Road, Seattle, WA',
+    carrier: 'VYRA QC Lab, Surat (Inspector #09)',
+    address: 'Flat 402, Green Glen Heights, Koramangala, Bengaluru',
     items: [
-      { title: 'Cyber-Tokyo 280 GSM Graphic Tee', size: 'M', qty: 2, price: 37.98 }
+      { title: 'Tactical Parachute Cargoes', size: '32', qty: 1, price: 1599 }
     ],
-    total: '$37.98'
+    total: '₹1,599'
   },
-  '#DV-99411': {
-    orderId: '#DV-99411',
+  '#VV-99411': {
+    orderId: '#VV-99411',
     date: 'Nov 14, 2026',
     eta: 'Estimated Tomorrow, Nov 16',
-    status: 'In Transit to Regional Hub',
+    status: 'In Transit to Regional Hub (Mumbai Airport)',
     step: 3,
-    carrier: 'Priority Air Cargo Line',
-    address: '154 Skyline Blvd, San Francisco, CA',
+    carrier: 'Delhivery Priority Cargo',
+    address: 'Hostel 7, IIT Bombay Campus, Powai, Mumbai',
     items: [
-      { title: 'Matte Black Water-Repellent Puffer', size: 'L', qty: 1, price: 54.00 }
+      { title: 'Matte Black Water-Repellent Puffer', size: 'L', qty: 1, price: 2799 }
     ],
-    total: '$54.00'
+    total: '₹2,799'
   }
 };
 
@@ -246,19 +251,18 @@ class AppState {
     this.searchQuery = '';
     this.sortBy = 'featured';
     this.appliedCoupon = null;
-    this.wishlist = new Set([1, 4]); // Pre-filled with a couple cool items
-    this.activeTrackingOrder = TRACKING_DATA['#DV-89240'];
+    this.wishlist = new Set([1, 4]); // Pre-filled with saved favorites
+    this.activeTrackingOrder = TRACKING_DATA['#VV-89240'];
   }
 
   loadCart() {
     try {
-      const saved = localStorage.getItem('dripvault_cart');
+      const saved = localStorage.getItem('vyra_cart') || localStorage.getItem('dripvault_cart');
       return saved ? JSON.parse(saved) : [
-        // Default welcoming pre-loaded sample fit for instant delight
         {
           id: 1,
           title: 'Acid-Wash "Overdrive" Boxy Hoodie',
-          price: 34.99,
+          price: 1499,
           size: 'L',
           image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80',
           qty: 1
@@ -271,7 +275,7 @@ class AppState {
 
   saveCart() {
     try {
-      localStorage.setItem('dripvault_cart', JSON.stringify(this.cart));
+      localStorage.setItem('vyra_cart', JSON.stringify(this.cart));
     } catch (e) {
       console.warn('Could not save cart to localStorage', e);
     }
@@ -341,7 +345,6 @@ const state = new AppState();
 // 5. DOM ELEMENTS & LISTENERS
 // =================================================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Lucide icons
   if (window.lucide) {
     lucide.createIcons();
   }
@@ -413,9 +416,9 @@ function initOfferPopup() {
 
   // Claim & Shop Now Button
   claimBtn.addEventListener('click', () => {
-    state.appliedCoupon = COUPONS['TEENDRIP35'];
+    state.appliedCoupon = COUPONS['VYRATEEN35'];
     closeModal();
-    showToast('Code TEENDRIP35 applied! 35% discount active.', 'sparkles');
+    showToast('Code VYRATEEN35 applied! 35% discount active.', 'sparkles');
     renderCart();
     
     // Smooth scroll down to catalog fits
@@ -444,7 +447,6 @@ function initNavigation() {
   function switchView(viewName) {
     state.currentView = viewName;
 
-    // Toggle active class on views
     views.forEach(v => {
       v.classList.remove('active');
       if (v.id === `${viewName}View`) {
@@ -452,12 +454,10 @@ function initNavigation() {
       }
     });
 
-    // Update Desktop Nav Active state
     document.querySelectorAll('.desktop-nav .nav-item').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.view === viewName);
     });
 
-    // Update Mobile Nav Active state
     document.querySelectorAll('.mobile-bottom-nav .mobile-nav-item').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.view === viewName);
     });
@@ -474,13 +474,11 @@ function initNavigation() {
     });
   });
 
-  // Logo returns to Home
   document.getElementById('navLogo').addEventListener('click', (e) => {
     e.preventDefault();
     switchView('home');
   });
 
-  // Quick Hero "Explore Fits" button
   const exploreFitsBtn = document.getElementById('exploreFitsBtn');
   if (exploreFitsBtn) {
     exploreFitsBtn.addEventListener('click', (e) => {
@@ -502,7 +500,6 @@ function initSearchAndFilter() {
   const categoryPills = document.querySelectorAll('.cat-pill');
   const resetSearchBtn = document.getElementById('resetSearchBtn');
 
-  // Live search input
   searchInput.addEventListener('input', (e) => {
     state.searchQuery = e.target.value.trim().toLowerCase();
     clearSearchBtn.style.display = state.searchQuery ? 'block' : 'none';
@@ -527,7 +524,6 @@ function initSearchAndFilter() {
     });
   }
 
-  // Category selection pills
   categoryPills.forEach(pill => {
     pill.addEventListener('click', () => {
       categoryPills.forEach(p => p.classList.remove('active'));
@@ -537,7 +533,6 @@ function initSearchAndFilter() {
     });
   });
 
-  // Sorting selection
   sortSelect.addEventListener('change', (e) => {
     state.sortBy = e.target.value;
     renderProducts();
@@ -555,14 +550,13 @@ function updateWishlistCount() {
 }
 
 // =================================================================
-// 9. PRODUCT RENDERING & CARD GENERATION
+// 9. PRODUCT RENDERING & CARD GENERATION (INR ₹)
 // =================================================================
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   const emptyState = document.getElementById('noResultsState');
   if (!grid) return;
 
-  // Filter products by category and search
   let filtered = PRODUCTS.filter(p => {
     const matchesCategory = state.activeCategory === 'all' || p.category === state.activeCategory;
     const matchesSearch = !state.searchQuery || 
@@ -572,7 +566,6 @@ function renderProducts() {
     return matchesCategory && matchesSearch;
   });
 
-  // Apply sorting
   if (state.sortBy === 'price-low') {
     filtered.sort((a, b) => a.price - b.price);
   } else if (state.sortBy === 'price-high') {
@@ -633,12 +626,12 @@ function renderProducts() {
 
           <div class="product-card-bottom">
             <div class="card-pricing">
-              <span class="card-curr-price">$${product.price.toFixed(2)}</span>
-              <span class="card-orig-price">$${product.origPrice.toFixed(2)}</span>
+              <span class="card-curr-price">${formatINR(product.price)}</span>
+              <span class="card-orig-price">${formatINR(product.origPrice)}</span>
             </div>
 
             <button class="add-cart-action-btn" data-add-cart="${product.id}">
-              <i data-lucide="shopping-bag"></i> Add to Cart
+              <i data-lucide="shopping-bag"></i> Add to Bag
             </button>
           </div>
         </div>
@@ -651,7 +644,6 @@ function renderProducts() {
 }
 
 function attachCardEvents() {
-  // Size selection on product card
   document.querySelectorAll('.size-selector-compact').forEach(selector => {
     selector.querySelectorAll('.size-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -661,7 +653,6 @@ function attachCardEvents() {
     });
   });
 
-  // Add to cart buttons
   document.querySelectorAll('[data-add-cart]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const card = btn.closest('.product-card');
@@ -676,7 +667,6 @@ function attachCardEvents() {
     });
   });
 
-  // Wishlist toggle buttons
   document.querySelectorAll('[data-wishlist]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -685,7 +675,6 @@ function attachCardEvents() {
     });
   });
 
-  // Quick view trigger
   document.querySelectorAll('[data-quickview]').forEach(btn => {
     btn.addEventListener('click', () => {
       const productId = parseInt(btn.dataset.quickview, 10);
@@ -693,7 +682,6 @@ function attachCardEvents() {
     });
   });
 
-  // Hero Quick Add
   const heroBtn = document.querySelector('.quick-add-hero');
   if (heroBtn) {
     heroBtn.onclick = () => {
@@ -704,7 +692,7 @@ function attachCardEvents() {
 }
 
 // =================================================================
-// 10. QUICK VIEW MODAL
+// 10. QUICK VIEW MODAL (INR ₹)
 // =================================================================
 function openQuickView(productId) {
   const product = PRODUCTS.find(p => p.id === productId);
@@ -722,9 +710,9 @@ function openQuickView(productId) {
       <h2 class="qv-title">${product.title}</h2>
       
       <div class="price-row">
-        <span class="curr-price">$${product.price.toFixed(2)}</span>
-        <span class="orig-price">$${product.origPrice.toFixed(2)}</span>
-        <span class="savings">Save $${(product.origPrice - product.price).toFixed(2)} (-${product.discount}%)</span>
+        <span class="curr-price">${formatINR(product.price)}</span>
+        <span class="orig-price">${formatINR(product.origPrice)}</span>
+        <span class="savings">Save ${formatINR(product.origPrice - product.price)} (-${product.discount}%)</span>
       </div>
 
       <p class="product-desc" style="-webkit-line-clamp: unset;">${product.description}</p>
@@ -741,7 +729,7 @@ function openQuickView(productId) {
       </div>
 
       <button class="btn btn-primary btn-block btn-lg" id="qvAddToCartBtn">
-        <i data-lucide="shopping-bag"></i> Add to Bag ($${product.price.toFixed(2)})
+        <i data-lucide="shopping-bag"></i> Add to Bag (${formatINR(product.price)})
       </button>
     </div>
   `;
@@ -750,7 +738,6 @@ function openQuickView(productId) {
   modal.classList.add('active');
   if (window.lucide) lucide.createIcons();
 
-  // Size click in modal
   const qvSizes = container.querySelectorAll('#qvSizeSelector .size-btn');
   qvSizes.forEach(b => {
     b.addEventListener('click', () => {
@@ -759,7 +746,6 @@ function openQuickView(productId) {
     });
   });
 
-  // Modal Add to Cart
   document.getElementById('qvAddToCartBtn').addEventListener('click', () => {
     const activeSize = container.querySelector('#qvSizeSelector .size-btn.active');
     const sz = activeSize ? activeSize.dataset.size : product.sizes[0];
@@ -768,7 +754,6 @@ function openQuickView(productId) {
     setTimeout(() => { modal.style.display = 'none'; }, 200);
   });
 
-  // Close Quick View
   const closeBtn = document.getElementById('closeQuickViewBtn');
   closeBtn.onclick = () => {
     modal.classList.remove('active');
@@ -784,7 +769,7 @@ function openQuickView(productId) {
 }
 
 // =================================================================
-// 11. CART DRAWER & CHECKOUT ENGINE
+// 11. CART DRAWER & CHECKOUT ENGINE (INR ₹)
 // =================================================================
 function initCartDrawer() {
   const cartOverlay = document.getElementById('cartDrawerOverlay');
@@ -815,7 +800,6 @@ function initCartDrawer() {
     if (e.target === cartOverlay) closeDrawer();
   });
 
-  // Coupon application inside cart
   applyCouponBtn.addEventListener('click', () => {
     const code = cartCouponInput.value.trim().toUpperCase();
     if (!code) return;
@@ -826,7 +810,7 @@ function initCartDrawer() {
       showToast(`Coupon applied: ${COUPONS[code].label}!`, 'check-circle');
       renderCart();
     } else {
-      showToast('Invalid promo code! Try TEENDRIP35 or FREEDELIVERY', 'alert-circle');
+      showToast('Invalid promo code! Try VYRATEEN35 or FREEDELIVERY', 'alert-circle');
     }
   });
 
@@ -836,7 +820,6 @@ function initCartDrawer() {
     renderCart();
   });
 
-  // Copy buttons on Offers tab
   document.querySelectorAll('.copy-code-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const code = btn.dataset.code;
@@ -846,47 +829,40 @@ function initCartDrawer() {
     });
   });
 
-  // Checkout process simulation
   checkoutBtn.addEventListener('click', () => {
     if (state.cart.length === 0) {
       showToast('Your bag is empty!', 'alert-triangle');
       return;
     }
 
-    // Generate dynamic order
     const randomNum = Math.floor(10000 + Math.random() * 90000);
-    const newOrderId = `#DV-${randomNum}`;
+    const newOrderId = `#VV-${randomNum}`;
     const subtotal = state.cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
 
-    // Save as active order in tracking
     TRACKING_DATA[newOrderId] = {
       orderId: newOrderId,
       date: 'Just now',
-      eta: 'Estimated in 2-3 business days',
-      status: 'Order Confirmed & Payment Verified',
+      eta: 'Estimated in 2-3 business days across India',
+      status: 'Order Confirmed & UPI / Card Verified',
       step: 0,
-      carrier: 'Velocity Express Priority',
-      address: '428 Campus Way, Apt 3B, College Station',
+      carrier: 'BlueDart / Delhivery Priority Air Cargo',
+      address: 'Room 204, North Campus Boys Hostel, New Delhi',
       items: [...state.cart],
-      total: `$${subtotal.toFixed(2)}`
+      total: formatINR(subtotal)
     };
 
     state.activeTrackingOrder = TRACKING_DATA[newOrderId];
 
-    // Clear cart and close drawer
     state.cart = [];
     state.saveCart();
     closeDrawer();
 
-    // Show celebratory toast
     showToast(`Order Placed! Tracking ID: ${newOrderId}`, 'package-check');
 
-    // Automatically transition to Tracker View to showcase the live order!
     setTimeout(() => {
       const trackerNavBtn = document.querySelector('[data-view="tracker"]');
       if (trackerNavBtn) trackerNavBtn.click();
 
-      // Pre-fill tracker input and display order
       const trackingInput = document.getElementById('trackingCodeInput');
       if (trackingInput) trackingInput.value = newOrderId;
       renderTrackerResult(state.activeTrackingOrder);
@@ -915,25 +891,23 @@ function renderCart() {
   const totalItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
   const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
-  // Update count badges
   if (cartCountEl) cartCountEl.textContent = totalItems;
   if (mobileCartCountEl) mobileCartCountEl.textContent = totalItems;
   if (cartDrawerCountEl) cartDrawerCountEl.textContent = totalItems;
-  if (cartTotalPreview) cartTotalPreview.textContent = `$${subtotal.toFixed(2)}`;
+  if (cartTotalPreview) cartTotalPreview.textContent = formatINR(subtotal);
 
-  // Free shipping threshold ($40)
-  const FREE_SHIPPING_THRESHOLD = 40.00;
-  let shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD || subtotal === 0 ? 0.00 : 6.99;
+  // Free shipping threshold (₹999)
+  const FREE_SHIPPING_THRESHOLD = 999;
+  let shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD || subtotal === 0 ? 0 : 99;
 
-  // Coupon calculations
-  let discountAmount = 0.00;
+  let discountAmount = 0;
   if (state.appliedCoupon) {
     if (state.appliedCoupon.type === 'percent') {
       discountAmount = (subtotal * state.appliedCoupon.discountPercent) / 100;
     } else if (state.appliedCoupon.type === 'flat') {
       discountAmount = Math.min(subtotal, state.appliedCoupon.discountFlat);
     } else if (state.appliedCoupon.type === 'shipping') {
-      shippingCost = 0.00;
+      shippingCost = 0;
     }
 
     if (couponAppliedBadge) {
@@ -944,30 +918,27 @@ function renderCart() {
     if (couponAppliedBadge) couponAppliedBadge.style.display = 'none';
   }
 
-  // Shipping threshold progress bar
   if (shippingProgressFill && shippingThresholdMsg) {
     if (subtotal >= FREE_SHIPPING_THRESHOLD) {
       shippingProgressFill.style.width = '100%';
       shippingThresholdMsg.innerHTML = `🎉 <strong>Congrats!</strong> You unlocked FREE Express Delivery!`;
-      shippingCost = 0.00;
+      shippingCost = 0;
     } else {
-      const remaining = (FREE_SHIPPING_THRESHOLD - subtotal).toFixed(2);
+      const remaining = FREE_SHIPPING_THRESHOLD - subtotal;
       const percent = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
       shippingProgressFill.style.width = `${percent}%`;
-      shippingThresholdMsg.innerHTML = `Add <strong>$${remaining}</strong> more for <strong>FREE Express Shipping!</strong>`;
+      shippingThresholdMsg.innerHTML = `Add <strong>₹${remaining}</strong> more for <strong>FREE Express Shipping!</strong>`;
     }
   }
 
   const finalTotal = Math.max(0, subtotal - discountAmount + shippingCost);
 
-  // Render Prices
-  if (subtotalDisplay) subtotalDisplay.textContent = `$${subtotal.toFixed(2)}`;
-  if (shippingDisplay) shippingDisplay.textContent = shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`;
-  if (discountDisplay) discountDisplay.textContent = `-$${discountAmount.toFixed(2)}`;
+  if (subtotalDisplay) subtotalDisplay.textContent = formatINR(subtotal);
+  if (shippingDisplay) shippingDisplay.textContent = shippingCost === 0 ? 'FREE' : formatINR(shippingCost);
+  if (discountDisplay) discountDisplay.textContent = `-${formatINR(discountAmount)}`;
   if (discountLine) discountLine.style.display = discountAmount > 0 ? 'flex' : 'none';
-  if (finalTotalDisplay) finalTotalDisplay.textContent = `$${finalTotal.toFixed(2)}`;
+  if (finalTotalDisplay) finalTotalDisplay.textContent = formatINR(finalTotal);
 
-  // Cart Empty vs Filled States
   if (state.cart.length === 0) {
     cartItemsList.style.display = 'none';
     cartFooter.style.display = 'none';
@@ -979,7 +950,6 @@ function renderCart() {
   cartFooter.style.display = 'block';
   emptyCartView.style.display = 'none';
 
-  // Render Cart Item Cards
   cartItemsList.innerHTML = state.cart.map((item, index) => `
     <div class="cart-item">
       <img src="${item.image}" alt="${item.title}" class="cart-item-thumb">
@@ -987,7 +957,7 @@ function renderCart() {
         <h4 class="ci-title">${item.title}</h4>
         <span class="ci-size">Size: <strong>${item.size}</strong></span>
         <div class="ci-bottom">
-          <span class="ci-price">$${(item.price * item.qty).toFixed(2)}</span>
+          <span class="ci-price">${formatINR(item.price * item.qty)}</span>
           <div class="qty-control">
             <button class="qty-btn" data-qty-dec="${index}">-</button>
             <span class="qty-number">${item.qty}</span>
@@ -1003,7 +973,6 @@ function renderCart() {
 
   if (window.lucide) lucide.createIcons();
 
-  // Attach quantity and remove actions
   cartItemsList.querySelectorAll('[data-qty-dec]').forEach(btn => {
     btn.onclick = () => state.updateQty(parseInt(btn.dataset.qtyDec, 10), -1);
   });
@@ -1016,14 +985,13 @@ function renderCart() {
 }
 
 // =================================================================
-// 12. LIVE ORDER TRACKER VIEW
+// 12. LIVE ORDER TRACKER VIEW (Indian Cities & Hubs)
 // =================================================================
 function initTracker() {
   const form = document.getElementById('trackerForm');
   const input = document.getElementById('trackingCodeInput');
   const sampleButtons = document.querySelectorAll('.sample-id-btn');
 
-  // Submit search
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const code = input.value.trim().toUpperCase();
@@ -1038,7 +1006,6 @@ function initTracker() {
     }
   });
 
-  // Quick Sample ID pills
   sampleButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const id = btn.dataset.id;
@@ -1048,7 +1015,6 @@ function initTracker() {
     });
   });
 
-  // Initial render
   renderTrackerResult(state.activeTrackingOrder);
 }
 
@@ -1057,10 +1023,10 @@ function renderTrackerResult(order) {
   if (!resultBox || !order) return;
 
   const steps = [
-    { label: 'Order Placed', time: '11:20 AM' },
+    { label: 'Order Confirmed', time: '11:20 AM' },
     { label: 'Quality Verified', time: '12:05 PM' },
     { label: 'Packed with Stickers', time: '1:15 PM' },
-    { label: 'Dispatched Priority', time: '2:30 PM' },
+    { label: 'BlueDart Dispatched', time: '2:30 PM' },
     { label: 'Out for Delivery', time: 'ETA 5:30 PM' }
   ];
 
@@ -1087,7 +1053,7 @@ function renderTrackerResult(order) {
   const itemsHtml = order.items.map(item => `
     <div style="display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
       <span>${item.qty}x <strong>${item.title}</strong> (Size ${item.size})</span>
-      <span style="font-family: var(--font-mono); color: var(--accent-lime);">$${item.price.toFixed(2)}</span>
+      <span style="font-family: var(--font-mono); color: var(--accent-lime);">${formatINR(item.price)}</span>
     </div>
   `).join('');
 
@@ -1103,16 +1069,14 @@ function renderTrackerResult(order) {
       </div>
     </div>
 
-    <!-- Animated 5-step visual timeline -->
     <div class="stepper-timeline">
       <div class="stepper-progress-line" style="width: calc(${progressPercent}% - 40px);"></div>
       ${stepsHtml}
     </div>
 
-    <!-- Metadata Details -->
     <div class="tracking-meta-grid">
       <div class="meta-col">
-        <span class="meta-label">Courier Network</span>
+        <span class="meta-label">Courier Partner</span>
         <span class="meta-val">${order.carrier}</span>
       </div>
       <div class="meta-col">
@@ -1125,7 +1089,6 @@ function renderTrackerResult(order) {
       </div>
     </div>
 
-    <!-- Order Items breakdown inside tracker -->
     <div style="margin-top: 1.5rem; background: #111520; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
       <h4 style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase;">Parcel Manifest</h4>
       ${itemsHtml}
@@ -1136,7 +1099,7 @@ function renderTrackerResult(order) {
 }
 
 // =================================================================
-// 13. USER PROFILE & AURA POINTS TABS
+// 13. USER PROFILE & AURA POINTS TABS (INR ₹)
 // =================================================================
 function initProfile() {
   const tabs = document.querySelectorAll('.p-tab');
@@ -1150,22 +1113,22 @@ function initProfile() {
         <div class="order-history-card">
           <div class="oh-header">
             <div>
-              <span class="oh-id">#DV-89240</span>
+              <span class="oh-id">#VV-89240</span>
               <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Placed Today, 11:20 AM • 2 Items</p>
             </div>
             <span class="oh-status transit">⚡ Out For Delivery</span>
           </div>
           <div class="oh-items-preview">
             <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=150&q=80" class="oh-thumb">
-            <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=150&q=80" class="oh-thumb">
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Total: <strong style="color: var(--accent-lime);">$73.49</strong></span>
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=150&q=80" class="oh-thumb">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Total: <strong style="color: var(--accent-lime);">₹2,298</strong></span>
           </div>
         </div>
 
         <div class="order-history-card">
           <div class="oh-header">
             <div>
-              <span class="oh-id">#DV-45120</span>
+              <span class="oh-id">#VV-45120</span>
               <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Delivered Oct 28, 2026 • 1 Item</p>
             </div>
             <span class="oh-status delivered"><i data-lucide="check"></i> Delivered</span>
@@ -1187,7 +1150,7 @@ function initProfile() {
               <div style="background: #111520; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem;">
                 <img src="${p.image}" style="width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 0.5rem;">
                 <h5 style="font-size: 0.85rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.title}</h5>
-                <span style="font-family: var(--font-mono); color: var(--accent-lime); font-size: 0.95rem; font-weight: 800;">$${p.price.toFixed(2)}</span>
+                <span style="font-family: var(--font-mono); color: var(--accent-lime); font-size: 0.95rem; font-weight: 800;">${formatINR(p.price)}</span>
                 <button class="btn btn-primary btn-block" style="padding: 0.35rem; font-size: 0.75rem; margin-top: 0.5rem;" onclick="state.addToCart(PRODUCTS.find(x => x.id === ${p.id}))">
                   Add to Bag
                 </button>
@@ -1199,11 +1162,11 @@ function initProfile() {
     } else if (tabType === 'rewards') {
       container.innerHTML = `
         <div style="background: #111520; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem;">
-          <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent-lime); margin-bottom: 0.5rem;">Your Drip Rewards Balance: 1,450 Coins</h3>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">Earn 10 coins for every $1 spent. Redeem for store credit, free shipping, or exclusive drops.</p>
+          <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent-lime); margin-bottom: 0.5rem;">Your VYRA Rewards Balance: 1,450 Coins (Value: ₹145)</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">Earn 10 coins for every ₹100 spent. Redeem for store credits, free shipping vouchers, or VIP drop access.</p>
           <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-            <button class="btn btn-glass" style="font-size: 0.8rem;">Redeem $10 Coupon (1,000 Coins)</button>
-            <button class="btn btn-glass" style="font-size: 0.8rem;">Claim Mystery Sticker Pack (350 Coins)</button>
+            <button class="btn btn-glass" style="font-size: 0.8rem;">Redeem ₹250 Coupon (2,000 Coins)</button>
+            <button class="btn btn-glass" style="font-size: 0.8rem;">Claim Free Drip Sticker Pack (350 Coins)</button>
           </div>
         </div>
       `;
@@ -1224,22 +1187,22 @@ function initProfile() {
 }
 
 // =================================================================
-// 14. FLASH SALE UNDER $25 & COUNTDOWN TIMER
+// 14. FLASH SALE UNDER ₹999 & COUNTDOWN TIMER
 // =================================================================
 function renderStealsUnder25() {
   const container = document.getElementById('under25Grid');
   if (!container) return;
 
-  const under25 = PRODUCTS.filter(p => p.price <= 25);
-  container.innerHTML = under25.map(p => `
+  const under999 = PRODUCTS.filter(p => p.price <= 999);
+  container.innerHTML = under999.map(p => `
     <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; padding: 0.85rem;">
       <img src="${p.image}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 0.75rem;">
       <span class="neon-chip" style="font-size: 0.65rem;">${p.gsm}</span>
       <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0.35rem 0;">${p.title}</h4>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
         <div>
-          <span style="font-family: var(--font-mono); color: var(--accent-lime); font-weight: 800; font-size: 1.1rem;">$${p.price.toFixed(2)}</span>
-          <span style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-dim); margin-left: 4px;">$${p.origPrice.toFixed(2)}</span>
+          <span style="font-family: var(--font-mono); color: var(--accent-lime); font-weight: 800; font-size: 1.1rem;">${formatINR(p.price)}</span>
+          <span style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-dim); margin-left: 4px;">${formatINR(p.origPrice)}</span>
         </div>
         <button class="pill-btn-sm" onclick="state.addToCart(PRODUCTS.find(x => x.id === ${p.id}))">
           Quick Add
@@ -1253,7 +1216,7 @@ function initFlashTimer() {
   const timerEl = document.getElementById('flashTimer');
   if (!timerEl) return;
 
-  let totalSeconds = 3 * 3600 + 47 * 60 + 19; // 03h 47m 19s
+  let totalSeconds = 3 * 3600 + 47 * 60 + 19;
   setInterval(() => {
     if (totalSeconds > 0) {
       totalSeconds -= 1;
