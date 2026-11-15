@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DRIPVAULT | High-Quality Streetwear & Fits for Teens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-dark text-light">
+
+  <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
+  <aside class="announcement-bar" role="region" aria-label="Announcement">
+    <div class="container announcement-inner">
+      <span class="pulse-dot"></span>
+      <p>🔥 <strong>BACK-TO-CAMPUS DROP:</strong> Heavyweight cotton, anti-shrink guarantee & up to 60% OFF!</p>
+      <button id="openOffersBtn" class="pill-btn-sm" aria-label="View latest offers">
+        <i data-lucide="tag"></i> View Offers
+      </button>
+    </div>
+  </aside>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="site-header">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="#" class="logo" id="navLogo">
+        <span class="logo-badge">DV</span>
+        <span class="logo-text">DRIP<span>VAULT</span></span>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <i data-lucide="search" class="search-icon"></i>
+        <input 
+          type="search" 
+          id="searchInput" 
+          placeholder="Search oversized tees, heavy hoodies, baggy cargoes..."
+          autocomplete="off"
+        >
+        <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Desktop Nav Actions -->
+      <nav class="desktop-nav">
+        <button class="nav-item active" data-view="home">
+          <i data-lucide="home"></i>
+          <span>Home</span>
+        </button>
+        <button class="nav-item" data-view="offers">
+          <i data-lucide="flame"></i>
+          <span>Offers</span>
+          <span class="hot-badge">NEW</span>
+        </button>
+        <button class="nav-item" data-view="tracker">
+          <i data-lucide="truck"></i>
+          <span>Tracker</span>
+        </button>
+        <button class="nav-item" data-view="profile">
+          <i data-lucide="user"></i>
+          <span>Profile</span>
+        </button>
+        <button class="nav-item cart-btn" id="openCartBtn" aria-label="Shopping Cart">
+          <div class="cart-icon-box">
+            <i data-lucide="shopping-bag"></i>
+            <span class="cart-count-badge" id="cartCount">0</span>
+          </div>
+          <span class="cart-total-preview" id="cartTotalPreview">$0.00</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= MOBILE BOTTOM NAVIGATION ================= -->
+  <nav class="mobile-bottom-nav">
+    <button class="mobile-nav-item active" data-view="home">
+      <i data-lucide="home"></i>
+      <span>Home</span>
+    </button>
+    <button class="mobile-nav-item" data-view="offers">
+      <i data-lucide="tag"></i>
+      <span>Deals</span>
+    </button>
+    <button class="mobile-nav-item mobile-cart-trigger" id="openMobileCartBtn">
+      <div class="cart-icon-box">
+        <i data-lucide="shopping-bag"></i>
+        <span class="cart-count-badge" id="mobileCartCount">0</span>
+      </div>
+      <span>Cart</span>
+    </button>
+    <button class="mobile-nav-item" data-view="tracker">
+      <i data-lucide="truck"></i>
+      <span>Tracker</span>
+    </button>
+    <button class="mobile-nav-item" data-view="profile">
+      <i data-lucide="user"></i>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+  <!-- ================= MAIN CONTENT VIEWS ================= -->
+  <main class="main-content">
+    
+    <!-- VIEW 1: HOME PAGE -->
+    <section id="homeView" class="view active">
+      
+      <!-- HERO BANNER -->
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <div class="hero-tag">
+              <span class="neon-chip">GEN-Z APPROVED QUALITY</span>
+              <span class="price-chip">40-60% OFF RETAIL</span>
+            </div>
+            <h1 class="hero-title">
+              Top Tier Drip. <br>
+              <span class="gradient-text">Pocket-Money Friendly.</span>
+            </h1>
+            <p class="hero-subtitle">
+              Why pay $90 for hype brand names? We engineer 280+ GSM heavyweight cotton tees, waterproof tech cargoes, and fleece hoodies sourced directly from ethical mills. Zero middlemen, zero cap.
+            </p>
+            <div class="hero-actions">
+              <a href="#catalog" class="btn btn-primary" id="exploreFitsBtn">
+                <span>Explore The Fits</span>
+                <i data-lucide="arrow-right"></i>
+              </a>
+              <button class="btn btn-glass" id="heroClaimOfferBtn">
+                <i data-lucide="sparkles"></i>
+                <span>Claim $20 Teen Drop Code</span>
+              </button>
+            </div>
+            
+            <div class="quality-perks">
+              <div class="perk-item">
+                <i data-lucide="shield-check"></i>
+                <div>
+                  <strong>300 GSM Heavyweight</strong>
+                  <span>No see-through fabrics</span>
+                </div>
+              </div>
+              <div class="perk-item">
+                <i data-lucide="refresh-cw"></i>
+                <div>
+                  <strong>Pre-Shrunk 100% Cotton</strong>
+                  <span>Washes without distortion</span>
+                </div>
+              </div>
+              <div class="perk-item">
+                <i data-lucide="zap"></i>
+                <div>
+                  <strong>Student Price Match</strong>
+                  <span>Real deals, no markup</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Promo Card -->
+          <div class="hero-card-wrapper">
+            <div class="deal-card-highlight">
+              <div class="deal-badge">🔥 STEAL OF THE DAY</div>
+              <div class="deal-image-box">
+                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80" alt="Cyberpunk Heavyweight Hoodie">
+                <div class="timer-float">
+                  <span class="timer-label">Flash Sale Ends In:</span>
+                  <div class="timer-digits" id="flashTimer">03:47:19</div>
+                </div>
+              </div>
+              <div class="deal-info">
+                <div class="deal-tags">
+                  <span class="spec-tag">380 GSM Fleece</span>
+                  <span class="discount-pill">-55% OFF</span>
+                </div>
+                <h3>Acid-Wash "Overdrive" Boxy Hoodie</h3>
+                <div class="price-row">
+                  <span class="curr-price">$34.99</span>
+                  <span class="orig-price">$78.00</span>
+                  <span class="savings">Save $43.01</span>
+                </div>
+                <button class="btn btn-primary btn-block quick-add-hero" data-id="1">
+                  <i data-lucide="shopping-cart"></i> Quick Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUALITY COMPARISON TICKER -->
+      <section class="trust-ticker">
+        <div class="container ticker-container">
+          <div class="ticker-box">
+            <span class="brand-x">Traditional Brand: $85</span>
+            <span class="vs">VS</span>
+            <span class="brand-dv">DripVault Premium: $32</span>
+            <span class="ticker-note">(Same 300 GSM Fabric Mill, Zero Influencer Markup)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORY PILLS & FILTERS -->
+      <section class="catalog-section" id="catalog">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="eyebrow">CURATED TEEN COLLECTION</span>
+              <h2 class="section-title">Upgrade Your Aesthetic</h2>
+            </div>
+            
+            <!-- Sort dropdown -->
+            <div class="filter-controls">
+              <label for="sortSelect" class="sort-label">Sort by:</label>
+              <select id="sortSelect" class="custom-select">
+                <option value="featured">Featured Drops</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="discount">Biggest Steals (% Off)</option>
+                <option value="rating">Top Rated (Quality)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Category Buttons -->
+          <div class="category-scroll-container">
+            <div class="category-pills" id="categoryPills">
+              <button class="cat-pill active" data-category="all">
+                <i data-lucide="grid"></i> All Fits (<span id="countAll">0</span>)
+              </button>
+              <button class="cat-pill" data-category="tees">
+                <i data-lucide="shirt"></i> Graphic & Boxy Tees
+              </button>
+              <button class="cat-pill" data-category="hoodies">
+                <i data-lucide="wind"></i> Heavy Hoodies
+              </button>
+              <button class="cat-pill" data-category="cargoes">
+                <i data-lucide="layers"></i> Baggy Cargoes & Denim
+              </button>
+              <button class="cat-pill" data-category="jackets">
+                <i data-lucide="shield"></i> Puffer & Varsity
+              </button>
+              <button class="cat-pill" data-category="accessories">
+                <i data-lucide="watch"></i> Y2K Caps & Bags
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Grid -->
+          <div class="products-grid" id="productsGrid">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+
+          <!-- Empty State -->
+          <div id="noResultsState" class="empty-state" style="display: none;">
+            <i data-lucide="search-x" class="empty-icon"></i>
+            <h3>No fits match your search!</h3>
+            <p>Try searching for "tee", "cargo", "hoodie", or clear filters.</p>
+            <button class="btn btn-glass" id="resetSearchBtn">Reset Filters</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FABRIC & QUALITY GUARANTEE BANNER -->
+      <section class="fabric-banner">
+        <div class="container fabric-grid">
+          <div class="fabric-text">
+            <span class="neon-chip">ENGINEERED FOR TEENS</span>
+            <h2>Why Our Clothes Outlast Mall Brands 3x</h2>
+            <ul class="fabric-features">
+              <li>
+                <div class="icon-circle"><i data-lucide="check"></i></div>
+                <div>
+                  <strong>High GSM Thread Density:</strong> Never flimsy or transparent. Real structured drape that holds shape all semester.
+                </div>
+              </li>
+              <li>
+                <div class="icon-circle"><i data-lucide="check"></i></div>
+                <div>
+                  <strong>Reinforced Double-Lock Stitching:</strong> Shoulder seams and pocket rivets built for skateparks, commutes, and daily wear.
+                </div>
+              </li>
+              <li>
+                <div class="icon-circle"><i data-lucide="check"></i></div>
+                <div>
+                  <strong>Skin-Safe Reactive Dye:</strong> Non-irritating on sensitive skin, doesn't fade into grey after 3 laundry washes.
+                </div>
+              </li>
+              <li>
+                <div class="icon-circle"><i data-lucide="check"></i></div>
+                <div>
+                  <strong>Direct Student Pricing:</strong> We negotiate direct mill batches so teens don't get robbed by reseller markups.
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="fabric-stat-card">
+            <div class="stat-box">
+              <span class="stat-number">4.9/5</span>
+              <span class="stat-caption">Average Fabric Rating by 14,000+ Teen Shoppers</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">100%</span>
+              <span class="stat-caption">Pre-Shrunk Guarantee or Free Instant Exchange</span>
+            </div>
+            <div class="stat-box highlight">
+              <span class="stat-number">Save 55%</span>
+              <span class="stat-caption">Average savings vs retail fast-fashion</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- VIEW 2: LATEST OFFERS PAGE -->
+    <section id="offersView" class="view">
+      <div class="container offers-page-container">
+        <div class="view-header">
+          <span class="eyebrow">EXCLUSIVE STUDENT & TEEN DISCOUNTS</span>
+          <h1 class="view-title">Active Promos & Secret Steals</h1>
+          <p class="view-desc">Stack these promo codes at checkout for maximum price cuts. Updated every 24 hours!</p>
+        </div>
+
+        <div class="coupons-grid">
+          <!-- Coupon 1 -->
+          <div class="coupon-ticket">
+            <div class="coupon-left">
+              <span class="coupon-discount">35% OFF</span>
+              <span class="coupon-min">First Order Drop</span>
+            </div>
+            <div class="coupon-right">
+              <div class="coupon-badge">WELCOME GIFT</div>
+              <h3>Freshman / Teen Welcome Pack</h3>
+              <p>Get flat 35% discount on all graphic tees & hoodies. No minimum cart value required.</p>
+              <div class="code-box">
+                <span class="code-text" id="code1">TEENDRIP35</span>
+                <button class="copy-code-btn" data-code="TEENDRIP35">
+                  <i data-lucide="copy"></i> Copy
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coupon 2 -->
+          <div class="coupon-ticket">
+            <div class="coupon-left accent-green">
+              <span class="coupon-discount">FREE</span>
+              <span class="coupon-min">Orders over $40</span>
+            </div>
+            <div class="coupon-right">
+              <div class="coupon-badge">ZERO SHIPPING</div>
+              <h3>Express Doorstep Delivery</h3>
+              <p>Skip the $6.99 delivery fee. Dispatched via priority air cargo with live GPS tracker.</p>
+              <div class="code-box">
+                <span class="code-text" id="code2">FREEDELIVERY</span>
+                <button class="copy-code-btn" data-code="FREEDELIVERY">
+                  <i data-lucide="copy"></i> Copy
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coupon 3 -->
+          <div class="coupon-ticket">
+            <div class="coupon-left accent-purple">
+              <span class="coupon-discount">$15 OFF</span>
+              <span class="coupon-min">Cart over $50</span>
+            </div>
+            <div class="coupon-right">
+              <div class="coupon-badge">CAMPUS BUDDY</div>
+              <h3>BOGO / Multi-Fit Bonus</h3>
+              <p>Buy two or more items (cargo + hoodie combo) and shave $15 right off the register.</p>
+              <div class="code-box">
+                <span class="code-text" id="code3">FITSTACK15</span>
+                <button class="copy-code-btn" data-code="FITSTACK15">
+                  <i data-lucide="copy"></i> Copy
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Flash Steals list -->
+        <div class="steals-spotlight">
+          <h2 class="sub-heading">⚡ Real-Time Price Drops Under $25</h2>
+          <div class="steals-row" id="under25Grid">
+            <!-- Injected by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: ORDER TRACKER -->
+    <section id="trackerView" class="view">
+      <div class="container tracker-container-view">
+        <div class="view-header text-center">
+          <span class="eyebrow">LIVE PARCEL RADAR</span>
+          <h1 class="view-title">Track Your Drip Order</h1>
+          <p class="view-desc">Monitor live status from fabric quality verification to your front door.</p>
+        </div>
+
+        <!-- Tracker Input Form -->
+        <div class="tracker-card">
+          <form id="trackerForm" class="tracker-form">
+            <div class="tracker-input-group">
+              <i data-lucide="search" class="t-icon"></i>
+              <input 
+                type="text" 
+                id="trackingCodeInput" 
+                placeholder="Enter Tracking ID (e.g., #DV-89240 or use sample)" 
+                value="#DV-89240"
+                required
+              >
+              <button type="submit" class="btn btn-primary">
+                <span>Locate Package</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+            <div class="quick-sample-ids">
+              <span>Quick Demo IDs:</span>
+              <button type="button" class="sample-id-btn" data-id="#DV-89240">#DV-89240 (Out For Delivery)</button>
+              <button type="button" class="sample-id-btn" data-id="#DV-72104">#DV-72104 (Quality Check)</button>
+              <button type="button" class="sample-id-btn" data-id="#DV-99411">#DV-99411 (Dispatched)</button>
+            </div>
+          </form>
+
+          <!-- Tracker Result Display -->
+          <div id="trackerResultBox" class="tracker-results">
+            <!-- Populated dynamically by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: USER PROFILE & AURA POINTS -->
+    <section id="profileView" class="view">
+      <div class="container profile-container-view">
+        <div class="profile-layout">
+          <!-- Profile Sidebar -->
+          <div class="profile-card">
+            <div class="avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Teen User Avatar" class="profile-avatar">
+              <span class="online-status"></span>
+            </div>
+            <h2 class="user-name">Jordan Rivera</h2>
+            <p class="user-handle">@jordan_drip • High School Senior</p>
+            
+            <div class="aura-badge">
+              <i data-lucide="award"></i>
+              <div>
+                <strong>AURA LEVEL 4: DRIP CONNOISSEUR</strong>
+                <span>Top 5% quality shopper in your district</span>
+              </div>
+            </div>
+
+            <div class="stats-counter-grid">
+              <div class="stat-pill">
+                <span class="num">1,450</span>
+                <span class="lbl">Drip Coins ($14.50)</span>
+              </div>
+              <div class="stat-pill">
+                <span class="num">6</span>
+                <span class="lbl">Orders Placed</span>
+              </div>
+              <div class="stat-pill">
+                <span class="num">$184</span>
+                <span class="lbl">Saved vs Retail</span>
+              </div>
+            </div>
+
+            <div class="profile-actions">
+              <button class="btn btn-glass btn-block"><i data-lucide="edit-3"></i> Edit Measurements (Size: L)</button>
+              <button class="btn btn-glass btn-block"><i data-lucide="map-pin"></i> Delivery Addresses (2 Saved)</button>
+            </div>
+          </div>
+
+          <!-- Profile Main Content -->
+          <div class="profile-history">
+            <div class="profile-tabs">
+              <button class="p-tab active" data-ptab="orders">Recent Deliveries (3)</button>
+              <button class="p-tab" data-ptab="wishlist">Saved Fits Wishlist (<span id="wishlistCount">4</span>)</button>
+              <button class="p-tab" data-ptab="rewards">Student Rewards</button>
+            </div>
+
+            <div id="pTabContent" class="ptab-content">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= POP-UP MODAL: LATEST OFFERS ON OPEN ================= -->
+  <div id="offersPopupModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="modal-card popup-card">
+      <button class="modal-close-btn" id="closeOffersPopup" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="popup-visual">
+        <div class="neon-badge-pulse">⚡ TEEN EXCLUSIVE POP-UP</div>
+        <h2 id="popupTitle">LOCK IN YOUR FIRST DRIP AT <span class="highlight-yellow">35% OFF</span></h2>
+        <p>Premium 280-350 GSM fabrics. Heavyweight boxy fits. No retail price gouging. Apply our verified code right now:</p>
+      </div>
+
+      <div class="promo-reveal-box">
+        <div class="promo-code-container">
+          <span class="promo-label">DISCOUNT CODE</span>
+          <span class="promo-code" id="popupPromoCode">TEENDRIP35</span>
+        </div>
+        <button class="btn btn-copy" id="popupCopyBtn">
+          <i data-lucide="copy"></i> Copy Code
+        </button>
+      </div>
+
+      <div class="perks-strip">
+        <span><i data-lucide="check-circle-2"></i> Free Sticker Pack</span>
+        <span><i data-lucide="check-circle-2"></i> 100% Pre-Shrunk</span>
+        <span><i data-lucide="check-circle-2"></i> Fast Free Delivery over $40</span>
+      </div>
+
+      <div class="popup-actions">
+        <button class="btn btn-primary btn-block btn-lg" id="popupClaimAndShopBtn">
+          <span>Apply 35% & Shop The Fits</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+        <button class="text-link-btn" id="popupSkipBtn">
+          I'll pay regular price (Skip for now)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CART DRAWER ================= -->
+  <div id="cartDrawerOverlay" class="cart-overlay" aria-hidden="true">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <div class="cart-title-box">
+          <i data-lucide="shopping-bag"></i>
+          <h3>Your Bag (<span id="cartDrawerCount">0</span>)</h3>
+        </div>
+        <button class="cart-close-btn" id="closeCartBtn" aria-label="Close cart">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Free shipping progress bar -->
+      <div class="shipping-threshold">
+        <div class="threshold-text">
+          <i data-lucide="truck"></i>
+          <span id="shippingThresholdMsg">Add $40.00 for FREE Express Shipping!</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-fill" id="shippingProgressFill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items List -->
+      <div class="cart-items-scroll" id="cartItemsList">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Empty Cart State -->
+      <div id="emptyCartView" class="empty-cart-state" style="display: none;">
+        <i data-lucide="shopping-basket" class="empty-cart-icon"></i>
+        <h4>Your bag is feeling light</h4>
+        <p>Snag a heavyweight graphic tee or cargo pants to get started.</p>
+        <button class="btn btn-primary" id="startShoppingBtn">Explore The Drops</button>
+      </div>
+
+      <!-- Cart Footer / Summary -->
+      <div class="cart-footer" id="cartFooter">
+        <!-- Coupon input inside cart -->
+        <div class="cart-coupon-row">
+          <input type="text" id="cartCouponInput" placeholder="Enter promo code (e.g. TEENDRIP35)" autocomplete="off">
+          <button id="applyCouponBtn" class="btn btn-glass">Apply</button>
+        </div>
+        <div id="couponAppliedBadge" class="coupon-tag-active" style="display: none;">
+          <span>Code <strong id="appliedCodeName">TEENDRIP35</strong> active (-35%)</span>
+          <button id="removeCouponBtn" title="Remove coupon"><i data-lucide="x"></i></button>
+        </div>
+
+        <div class="price-breakdown">
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <span id="subtotalDisplay">$0.00</span>
+          </div>
+          <div class="summary-line text-green" id="discountLine" style="display: none;">
+            <span>Teen Savings</span>
+            <span id="discountDisplay">-$0.00</span>
+          </div>
+          <div class="summary-line">
+            <span>Estimated Shipping</span>
+            <span id="shippingDisplay">$6.99</span>
+          </div>
+          <div class="summary-line total-line">
+            <strong>Total</strong>
+            <strong id="finalTotalDisplay">$0.00</strong>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block btn-lg" id="checkoutBtn">
+          <span>Checkout Securely</span>
+          <i data-lucide="lock"></i>
+        </button>
+        <p class="cart-guarantee">
+          <i data-lucide="shield-check"></i> 14-Day Free Exchange Guarantee • Student Safe
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= QUICK VIEW / SIZE SELECTOR MODAL ================= -->
+  <div id="quickViewModal" class="modal-overlay" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal-card quick-view-card">
+      <button class="modal-close-btn" id="closeQuickViewBtn"><i data-lucide="x"></i></button>
+      <div class="quick-view-grid" id="quickViewContent">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- ================= SITE FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-badge">DV</span>
+          <span class="logo-text">DRIP<span>VAULT</span></span>
+        </a>
+        <p>The anti-fast-fashion brand built for high school & college budgets. Better fabrics, heavier GSM, zero gatekeeping.</p>
+        <div class="social-links">
+          <a href="#" title="TikTok"><i data-lucide="video"></i></a>
+          <a href="#" title="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" title="Discord"><i data-lucide="message-square"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#" class="f-link" data-view="home">Latest Fits</a></li>
+          <li><a href="#" class="f-link" data-view="offers">Active Deals & Steals</a></li>
+          <li><a href="#" class="f-link" data-view="tracker">Live Order Tracker</a></li>
+          <li><a href="#" class="f-link" data-view="profile">Student Aura Points</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quality Promise</h4>
+        <ul>
+          <li><a href="#fabric-banner">100% Pre-Shrunk Cotton</a></li>
+          <li><a href="#fabric-banner">Fabric GSM Explained</a></li>
+          <li><a href="#">Size Fit Guide (Teen Sizing)</a></li>
+          <li><a href="#">Easy 14-Day Exchanges</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Student Perks</h4>
+        <p>Verify your high school or college ID for a permanent 20% discount on every drop.</p>
+        <span class="verified-tag"><i data-lucide="check-circle"></i> Student ID Match Enabled</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container bottom-row">
+        <p>© 2026 DRIPVAULT Co. Crafted with ⚡ by 9-Year Senior Software Engineers for the next gen.</p>
+        <p class="status-indicator"><span class="status-dot"></span> All Systems Operational • Real-time Sync</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
