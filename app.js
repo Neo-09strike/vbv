@@ -1,11 +1,11 @@
 /**
  * VYRA BY VIPUL - Web Application Architecture
  * Built by 9-Year Senior Software Engineer for Teenagers & College Students
- * Clean state management, modular components, persistent cart & real-time radar (INR ₹)
+ * Pure Clothing Fashion, Pincode Delivery Availability Checker & Modern White GUI
  */
 
 // =================================================================
-// 1. PRODUCT CATALOG DATABASE (Prices in Indian Rupees ₹)
+// 1. PRODUCT CATALOG DATABASE (Pure Clothing Fashion Only - No Accessories)
 // =================================================================
 const PRODUCTS = [
   {
@@ -21,13 +21,13 @@ const PRODUCTS = [
     badge: 'STEAL DEAL',
     badgeType: 'steal',
     image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80',
-    description: 'Ultra-dense 380 GSM French Terry fleece engineered by Vipul. Boxy drop-shoulder cut, double-lined hood, and anti-pill fabric that never shrinks in the washer.',
+    description: 'Ultra-dense 380 GSM French Terry cotton fleece. Boxy drop-shoulder cut, double-lined hood, and anti-pill fabric that never shrinks in the washer.',
     specs: ['380 GSM 100% Cotton French Terry', 'Drop shoulder oversized streetwear fit', 'Pre-shrunk double washed', 'Thermal kangaroo pocket'],
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
   },
   {
     id: 2,
-    title: 'Cyber-Tokyo 280 GSM Graphic Tee',
+    title: 'Cyber-Tokyo 280 GSM Graphic Boxy Tee',
     category: 'tees',
     price: 799,
     origPrice: 1799,
@@ -61,8 +61,8 @@ const PRODUCTS = [
   },
   {
     id: 4,
-    title: 'Vintage Faded Selvedge Wide-Leg Denim',
-    category: 'cargoes',
+    title: 'Vintage Faded Selvedge Wide-Leg Denim Jeans',
+    category: 'denim',
     price: 1799,
     origPrice: 3999,
     discount: 55,
@@ -112,7 +112,7 @@ const PRODUCTS = [
   },
   {
     id: 7,
-    title: 'Distressed "No Signal" Vintage Tee',
+    title: 'Distressed "No Signal" Vintage Drop-Shoulder Tee',
     category: 'tees',
     price: 849,
     origPrice: 1699,
@@ -120,7 +120,7 @@ const PRODUCTS = [
     gsm: '260 GSM Carbon-Wash',
     rating: 4.8,
     reviews: 640,
-    badge: 'TRENDING',
+    badge: 'VINTAGE HIT',
     badgeType: 'trending',
     image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80',
     description: 'Carbon mineral washed for an authentic buttery soft vintage hand-feel. Heavy collar and dropped shoulders for that ideal effortless boxy look.',
@@ -129,24 +129,24 @@ const PRODUCTS = [
   },
   {
     id: 8,
-    title: 'Reflective Y2K Tech Crossbody Sling',
-    category: 'accessories',
-    price: 699,
-    origPrice: 1499,
-    discount: 53,
-    gsm: '600D Cordura Nylon',
-    rating: 4.8,
-    reviews: 420,
-    badge: 'ESSENTIAL',
+    title: 'Heavyweight Buffalo Plaid Oversized Flannel Shirt',
+    category: 'jackets',
+    price: 1399,
+    origPrice: 2899,
+    discount: 52,
+    gsm: '300 GSM Brushed Twill',
+    rating: 4.9,
+    reviews: 320,
+    badge: 'NEW DROP',
     badgeType: 'quality',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80',
-    description: 'Weatherproof 600D ballistic nylon bag. Holds phone, earbuds, charger, and wallet. Features 3M reflective trims and magnetic Fidlock buckle.',
-    specs: ['600D Weather-resistant Cordura', 'Quick-release magnetic buckle', 'Secret anti-theft back pocket', '3M night-reflective piping'],
-    sizes: ['ONE SIZE']
+    image: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=80',
+    description: 'Heavy 300 GSM brushed cotton twill flannel. Perfect as an overshirt or mid-layer over tees with drop-shoulder silhouette.',
+    specs: ['300 GSM Heavy brushed flannel', 'Tortoiseshell button closures', 'Dual chest flap pockets', 'Relaxed skater fit'],
+    sizes: ['S', 'M', 'L', 'XL']
   },
   {
     id: 9,
-    title: 'Matte Black Water-Repellent Puffer',
+    title: 'Matte Black Water-Repellent Puffer Jacket',
     category: 'jackets',
     price: 2799,
     origPrice: 6299,
@@ -163,24 +163,329 @@ const PRODUCTS = [
   },
   {
     id: 10,
-    title: 'Vintage Washed Low-Profile "VYRA" Cap',
-    category: 'accessories',
-    price: 549,
-    origPrice: 1199,
+    title: 'Relaxed Wide-Wale Corduroy Skater Trousers',
+    category: 'denim',
+    price: 1649,
+    origPrice: 3299,
+    discount: 50,
+    gsm: '340 GSM 8-Wale Corduroy',
+    rating: 4.8,
+    reviews: 215,
+    badge: 'ESSENTIAL',
+    badgeType: 'trending',
+    image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=80',
+    description: 'Textured 8-wale heavy cotton corduroy trousers with elasticated back waist, deep front slant pockets, and a vintage baggy cut.',
+    specs: ['340 GSM 100% Cotton Corduroy', 'Elasticated back waistband', 'Deep durable pockets', 'Straight wide-leg drape'],
+    sizes: ['28', '30', '32', '34', '36']
+  },
+  {
+    id: 11,
+    title: 'Retro Blokecore Oversized Football Jersey',
+    category: 'jerseys',
+    price: 999,
+    origPrice: 2199,
+    discount: 55,
+    gsm: '240 GSM Breathable Aero-Mesh',
+    rating: 4.9,
+    reviews: 540,
+    badge: 'BLOKECORE HIT',
+    badgeType: 'trending',
+    image: 'https://images.unsplash.com/photo-1577210897949-1f56f9435824?auto=format&fit=crop&w=800&q=80',
+    description: 'Vintage European pitch aesthetic with striped rib-knit V-neck, embroidered crest, and drop-shoulder streetwear cut. Engineered in ultra-breathable moisture-wicking aero-mesh.',
+    specs: ['240 GSM Breathable honeycomb aero-mesh', 'Ribbed retro V-neck collar', 'Sweat-wicking athletic tech', 'Boxy drop-shoulder pitch drape'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL']
+  },
+  {
+    id: 12,
+    title: 'Samba Noir Streetwear Football Jersey',
+    category: 'jerseys',
+    price: 1049,
+    origPrice: 2299,
     discount: 54,
-    gsm: '100% Chino Twill',
-    rating: 4.7,
-    reviews: 580,
-    badge: 'STEAL',
+    gsm: 'Jacquard Aero-Knit 220 GSM',
+    rating: 4.8,
+    reviews: 380,
+    badge: 'TOP QUALITY',
+    badgeType: 'quality',
+    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80',
+    description: 'Matte black jacquard weave with subtle geometric sublimation and golden badge accents. Perfect for turf nights, college fests, and game days.',
+    specs: ['Jacquard knit breathable structure', 'Thermal-pressed silicone crest', 'Raglan comfort sleeve cut', 'Quick-dry anti-odor treatment'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 13,
+    title: 'Bleed Blue \'92 Heritage Cricket Jersey',
+    category: 'jerseys',
+    price: 1149,
+    origPrice: 2499,
+    discount: 54,
+    gsm: '230 GSM Diamond Mesh',
+    rating: 5.0,
+    reviews: 620,
+    badge: 'CRICKET ICON',
     badgeType: 'steal',
-    image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80',
-    description: 'Classic dad-hat profile in heavy pigment-dyed chino cotton twill with antique brass buckle adjuster. The everyday fit complement.',
-    specs: ['Pigment-dyed vintage wash', 'Unstructured 6-panel design', 'Custom metal tri-glide buckle', 'Embroidered ventilation eyelets'],
-    sizes: ['ONE SIZE']
+    image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80',
+    description: 'Iconic retro Indian cricket heritage reimagined for the modern streetwear generation. Features vintage tricolor shoulder chevrons, polo collar, and relaxed fit.',
+    specs: ['230 GSM Diamond-knit athletic mesh', 'Retro polo button collar', 'High-definition sublimation that never fades', 'Anti-chafing flatlock stitching'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL']
+  },
+  {
+    id: 14,
+    title: 'Midnight Edition Performance Cricket Jersey',
+    category: 'jerseys',
+    price: 999,
+    origPrice: 2199,
+    discount: 55,
+    gsm: '210 GSM Aero-Vent Mesh',
+    rating: 4.9,
+    reviews: 295,
+    badge: 'NEW DROP',
+    badgeType: 'trending',
+    image: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80',
+    description: 'Stealth charcoal cricket jersey engineered with laser-perforated side cooling panels and raglan mobility cuts for pitch action and turf sessions.',
+    specs: ['Laser-cut side ventilation', '210 GSM Dry-fit breathable poly', 'Ribbed low-profile athletic collar', 'Fade-proof screenprint'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 15,
+    title: 'French Flax Organic Linen-Cotton Slub Tee',
+    category: 'linen',
+    price: 899,
+    origPrice: 1999,
+    discount: 55,
+    gsm: '200 GSM Linen-Cotton Slub',
+    rating: 4.8,
+    reviews: 410,
+    badge: 'PURE LINEN',
+    badgeType: 'quality',
+    image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80',
+    description: '55% Normandy French Flax blended with 45% organic combed cotton. Gives natural textured breathability, keeping you breezy and cool under scorching Indian heat.',
+    specs: ['55% French Flax Linen, 45% Cotton', 'Natural breathable textured slub', 'Heat-dissipating open weave', 'Pre-washed anti-stiffness feel'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL']
+  },
+  {
+    id: 16,
+    title: 'Resort Slub Linen Open-Collar Boxy Shirt-Tee',
+    category: 'linen',
+    price: 1199,
+    origPrice: 2599,
+    discount: 54,
+    gsm: '220 GSM 100% Pure Linen',
+    rating: 4.9,
+    reviews: 330,
+    badge: 'SUMMER HIT',
+    badgeType: 'trending',
+    image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80',
+    description: '100% Pure European flax linen with a relaxed Cuban camp collar and real coconut shell buttons. Wear buttoned up as a breezy tee or open over a tank.',
+    specs: ['100% Pure European Flax Linen', 'Relaxed Cuban camp-collar cut', 'Real sustainable coconut shell buttons', 'Effortless drape that softens with every wash'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 17,
+    title: 'Mineral-Washed Slub Linen Pocket Tee',
+    category: 'linen',
+    price: 849,
+    origPrice: 1799,
+    discount: 53,
+    gsm: '210 GSM Linen Blend',
+    rating: 4.7,
+    reviews: 275,
+    badge: 'CLEAN FIT',
+    badgeType: 'quality',
+    image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80',
+    description: 'Garment-dyed linen-cotton blend with an authentic vintage mineral wash. Features a single chest patch pocket and relaxed drop-shoulder cut.',
+    specs: ['60% Linen, 40% Combed Cotton', 'Reinforced chest patch pocket', 'Vintage mineral pigment dye', 'Relaxed boxy summer silhouette'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 18,
+    title: 'Textured Waffle-Knit Matching Co-Ord Set',
+    category: 'coords',
+    price: 1699,
+    origPrice: 3699,
+    discount: 54,
+    gsm: '300 GSM Honeycomb Waffle',
+    rating: 4.9,
+    reviews: 485,
+    badge: 'MATCHING SET',
+    badgeType: 'steal',
+    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
+    description: '2-Piece matching set: Heavyweight textured waffle boxy tee and matching drawstring relaxed shorts. The easiest 10/10 fit for weekend hangs and campus chill.',
+    specs: ['Complete 2-Piece Set (Tee + Shorts)', '300 GSM Heavy waffle honeycomb knit', 'Elastic waistband with dipped drawcord', 'Pre-shrunk anti-pill finish'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 19,
+    title: 'Breezy Pure Linen Matching Resort Co-Ord Set',
+    category: 'coords',
+    price: 1999,
+    origPrice: 4299,
+    discount: 53,
+    gsm: '220 GSM Pure Flax Linen',
+    rating: 5.0,
+    reviews: 310,
+    badge: 'VIP DROP',
+    badgeType: 'steal',
+    image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80',
+    description: 'Head-to-toe pure linen set: includes breathable short-sleeve resort camp shirt and tailored linen drawstring shorts with deep phone pockets.',
+    specs: ['Complete 2-Piece Linen Fit', '100% Breathable European Flax', 'Deep phone pockets + rear pocket', 'Supreme airflow for warm holidays'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 20,
+    title: 'Heavy French Terry Matching Street Track Set',
+    category: 'coords',
+    price: 1799,
+    origPrice: 3899,
+    discount: 54,
+    gsm: '340 GSM Heavy Cotton Terry',
+    rating: 4.9,
+    reviews: 395,
+    badge: 'CAMPUS STAPLE',
+    badgeType: 'trending',
+    image: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=80',
+    description: '2-Piece heavyweight track set: structured oversized boxy tee and heavy French Terry cargo sweatshorts with secure zippered pockets.',
+    specs: ['Complete 2-Piece Set (Oversized Tee + Cargo Shorts)', '340 GSM 100% Cotton French Terry', 'Zippered utility pocket on shorts', 'Ultra-durable double-needle construction'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 21,
+    title: 'Retro Blokecore Pitch Matching Jersey & Shorts Set',
+    category: 'coords',
+    price: 1599,
+    origPrice: 3499,
+    discount: 54,
+    gsm: '240 GSM Athletic Aero-Mesh',
+    rating: 4.8,
+    reviews: 260,
+    badge: 'FULL KIT',
+    badgeType: 'trending',
+    image: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=800&q=80',
+    description: 'Complete vintage pitch uniform: retro striped V-neck football jersey paired with matching vented mesh shorts. Ready for turf match or festival.',
+    specs: ['Complete 2-Piece Set (Jersey + Shorts)', '240 GSM Moisture-wicking aero-mesh', 'Contrast retro piping details', 'Internal drawstring waist'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 22,
+    title: 'Japanese "Neo-Kanji" Streetwear Graphic Tee',
+    category: 'tees',
+    price: 899,
+    origPrice: 1899,
+    discount: 53,
+    gsm: '280 GSM Pure Cotton',
+    rating: 4.9,
+    reviews: 412,
+    badge: 'TRENDING FIT',
+    badgeType: 'trending',
+    image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80',
+    description: 'Harajuku-inspired graphic printed on ultra-dense 280 GSM combed cotton. Ribbed collar stays flat and tight wash after wash.',
+    specs: ['280 GSM 100% Combed Cotton', 'Japanese typography backprint', 'Relaxed boxy cut with drop shoulders', 'Bio-washed anti-pilling fabric'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 23,
+    title: 'Boxy Minimalist Heavyweight Solid Pocket Tee',
+    category: 'tees',
+    price: 749,
+    origPrice: 1599,
+    discount: 53,
+    gsm: '270 GSM Compact Yarn',
+    rating: 4.7,
+    reviews: 520,
+    badge: 'ESSENTIAL',
+    badgeType: 'quality',
+    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',
+    description: 'Zero loud logos, pure silhouette perfection. Crafted from heavy compact yarn cotton with reinforced front patch pocket.',
+    specs: ['270 GSM Compact-spun cotton', 'Minimalist front chest pocket', 'Wide ribbed neckband', 'Boxy drop shoulder cut'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL']
+  },
+  {
+    id: 24,
+    title: 'Vintage Acid-Wash "World Tour" Heavy Band Tee',
+    category: 'tees',
+    price: 899,
+    origPrice: 1899,
+    discount: 53,
+    gsm: '280 GSM Heavy Acid-Wash',
+    rating: 4.9,
+    reviews: 460,
+    badge: 'STEAL DEAL',
+    badgeType: 'steal',
+    image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80',
+    description: 'Subtle distress detailing, authentic vintage acid-wash pattern, and cracked gothic tour print. 280 GSM cotton ensures substantial weight.',
+    specs: ['280 GSM Pure cotton jersey', 'Acid-wash vintage hand processing', 'Cracked screenprint styling', 'Reinforced collar & hem'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 25,
+    title: 'Mineral-Wash Graphic "Metropolis" Long-Sleeve Tee',
+    category: 'tees',
+    price: 949,
+    origPrice: 1999,
+    discount: 53,
+    gsm: '260 GSM Carbon Cotton',
+    rating: 4.8,
+    reviews: 310,
+    badge: 'NEW DROP',
+    badgeType: 'trending',
+    image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80',
+    description: 'Heavyweight long sleeve skate tee with faded cyberpunk graphics along both sleeves and back. Elastic ribbed cuffs for stacked wrist drape.',
+    specs: ['260 GSM Heavy long-sleeve cotton', 'Full sleeve graphic screen-prints', 'Pre-washed vintage patina', 'Ribbed cuffs and crew collar'],
+    sizes: ['S', 'M', 'L', 'XL']
+  },
+  {
+    id: 26,
+    title: 'Heavyweight 400 GSM Drop-Shoulder Zip Hoodie',
+    category: 'hoodies',
+    price: 1699,
+    origPrice: 3799,
+    discount: 55,
+    gsm: '400 GSM Heavy Fleece',
+    rating: 4.9,
+    reviews: 345,
+    badge: 'BESTSELLER',
+    badgeType: 'trending',
+    image: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80',
+    description: 'Massive 400 GSM fleece with dual silver metal zipper hardware. Double-layered hood that stays upright without collapsing.',
+    specs: ['400 GSM Dense Cotton Fleece', 'Dual-way metal zipper', 'Oversized boxy streetwear drape', 'Reinforced waist & wrist ribbing'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL']
+  },
+  {
+    id: 27,
+    title: '90s Carpenter Utility Denim with Tool Loop',
+    category: 'denim',
+    price: 1899,
+    origPrice: 4199,
+    discount: 55,
+    gsm: '14 oz Heavyweight Denim',
+    rating: 4.8,
+    reviews: 278,
+    badge: 'MUST HAVE',
+    badgeType: 'quality',
+    image: 'https://images.unsplash.com/photo-1542272604-780c96856592?auto=format&fit=crop&w=800&q=80',
+    description: 'Authentic 90s skate carpenter pants in 14 oz heavy indigo denim with triple-stitched utility pocket and hammer loop.',
+    specs: ['14 oz Ring-spun durable cotton denim', 'Triple needle reinforced seams', 'Authentic utility tool pockets', 'Relaxed baggy straight-leg silhouette'],
+    sizes: ['28', '30', '32', '34', '36']
+  },
+  {
+    id: 28,
+    title: 'Vintage Washed Olive Relaxed Cargo Joggers',
+    category: 'cargoes',
+    price: 1449,
+    origPrice: 2999,
+    discount: 52,
+    gsm: '320 GSM Cotton Twill',
+    rating: 4.9,
+    reviews: 490,
+    badge: 'TOP QUALITY',
+    badgeType: 'quality',
+    image: 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=80',
+    description: 'Mineral washed army olive cargo joggers with elastic drawstring waistband, 6 deep utility pockets, and tapered cuffs.',
+    specs: ['320 GSM Heavy cotton twill', 'Elasticated drawstring waist', '6 Ergonomic cargo pockets', 'Vintage mineral wash finish'],
+    sizes: ['28', '30', '32', '34', '36']
   }
 ];
 
-// Helper to format Indian Currency (INR ₹)
 function formatINR(val) {
   return `₹${Math.round(val).toLocaleString('en-IN')}`;
 }
@@ -195,7 +500,80 @@ const COUPONS = {
 };
 
 // =================================================================
-// 3. TRACKING DATABASE (Live Simulation with Indian Couriers)
+// 3. PINCODE DATABASE (Indian Courier Delivery Verification)
+// =================================================================
+const PINCODE_DIRECTORY = {
+  // Delhi NCR
+  '110001': { city: 'New Delhi (Connaught Place)', state: 'Delhi', days: '1-2 Days', cod: true },
+  '110007': { city: 'Delhi University (North Campus)', state: 'Delhi', days: '1-2 Days', cod: true },
+  '110016': { city: 'Hauz Khas / IIT Delhi', state: 'Delhi', days: '1-2 Days', cod: true },
+  '201301': { city: 'Noida', state: 'Uttar Pradesh', days: '1-2 Days', cod: true },
+  '122001': { city: 'Gurugram', state: 'Haryana', days: '1-2 Days', cod: true },
+  
+  // Mumbai
+  '400001': { city: 'Mumbai (Fort / Colaba)', state: 'Maharashtra', days: '2-3 Days', cod: true },
+  '400076': { city: 'Powai (IIT Bombay Campus)', state: 'Maharashtra', days: '2-3 Days', cod: true },
+  '400050': { city: 'Bandra West', state: 'Maharashtra', days: '2-3 Days', cod: true },
+  
+  // Bengaluru
+  '560001': { city: 'Bengaluru Central', state: 'Karnataka', days: '2-3 Days', cod: true },
+  '560034': { city: 'Koramangala, Bengaluru', state: 'Karnataka', days: '2-3 Days', cod: true },
+  '560095': { city: 'Koramangala 8th Block, Bengaluru', state: 'Karnataka', days: '2-3 Days', cod: true },
+  
+  // Hyderabad & Chennai & Kolkata
+  '500001': { city: 'Hyderabad', state: 'Telangana', days: '2-3 Days', cod: true },
+  '600001': { city: 'Chennai Central', state: 'Tamil Nadu', days: '2-3 Days', cod: true },
+  '700001': { city: 'Kolkata', state: 'West Bengal', days: '2-3 Days', cod: true },
+  '380001': { city: 'Ahmedabad', state: 'Gujarat', days: '2-3 Days', cod: true },
+  '411001': { city: 'Pune Central', state: 'Maharashtra', days: '2-3 Days', cod: true },
+  '302001': { city: 'Jaipur', state: 'Rajasthan', days: '2-3 Days', cod: true },
+  '226001': { city: 'Lucknow', state: 'Uttar Pradesh', days: '2-3 Days', cod: true },
+  '160001': { city: 'Chandigarh', state: 'Punjab/Haryana', days: '2-3 Days', cod: true }
+};
+
+function verifyPincode(pin) {
+  const cleanPin = pin.trim();
+  if (!/^\d{6}$/.test(cleanPin)) {
+    return { valid: false, message: 'Please enter a valid 6-digit Indian PIN code.' };
+  }
+
+  // Check known directory first
+  if (PINCODE_DIRECTORY[cleanPin]) {
+    const info = PINCODE_DIRECTORY[cleanPin];
+    return {
+      valid: true,
+      serviceable: true,
+      city: info.city,
+      state: info.state,
+      days: info.days,
+      cod: info.cod,
+      message: `Delivery Available to ${info.city}, ${info.state}! Estimated arrival in ${info.days} via BlueDart / Delhivery Priority Air. Cash on Delivery (COD) & UPI available.`
+    };
+  }
+
+  // Generalized Indian Pincode validation (First digit 1-8 are standard Indian postal zones)
+  const firstDigit = parseInt(cleanPin[0], 10);
+  if (firstDigit >= 1 && firstDigit <= 8) {
+    return {
+      valid: true,
+      serviceable: true,
+      city: 'Local Postal Division',
+      state: 'India',
+      days: '3-4 Days',
+      cod: true,
+      message: `Delivery Available to PIN ${cleanPin}! Estimated arrival in 3-4 business days via Delhivery Priority. Pre-paid UPI and Cash on Delivery both supported.`
+    };
+  }
+
+  return {
+    valid: true,
+    serviceable: false,
+    message: `Delivery is currently not serviceable to PIN ${cleanPin}. Please try an alternate campus or home address.`
+  };
+}
+
+// =================================================================
+// 4. TRACKING DATABASE (Live Simulation)
 // =================================================================
 const TRACKING_DATA = {
   '#VV-89240': {
@@ -203,7 +581,7 @@ const TRACKING_DATA = {
     date: 'Today, 11:20 AM',
     eta: 'Arriving Today by 5:30 PM',
     status: 'Out For Delivery in Delhi NCR',
-    step: 4, // 0 to 4
+    step: 4,
     carrier: 'BlueDart Air Express (Rider: Rahul S.)',
     address: 'Room 204, North Campus Boys Hostel, New Delhi',
     items: [
@@ -234,14 +612,14 @@ const TRACKING_DATA = {
     carrier: 'Delhivery Priority Cargo',
     address: 'Hostel 7, IIT Bombay Campus, Powai, Mumbai',
     items: [
-      { title: 'Matte Black Water-Repellent Puffer', size: 'L', qty: 1, price: 2799 }
+      { title: 'Matte Black Water-Repellent Puffer Jacket', size: 'L', qty: 1, price: 2799 }
     ],
     total: '₹2,799'
   }
 };
 
 // =================================================================
-// 4. REACTIVE APPLICATION STATE
+// 5. REACTIVE APPLICATION STATE
 // =================================================================
 class AppState {
   constructor() {
@@ -250,9 +628,15 @@ class AppState {
     this.activeCategory = 'all';
     this.searchQuery = '';
     this.sortBy = 'featured';
-    this.appliedCoupon = null;
-    this.wishlist = new Set([1, 4]); // Pre-filled with saved favorites
+    this.appliedCoupon = COUPONS['VYRATEEN35']; // default welcome discount
+    this.wishlist = new Set([1, 4]);
     this.activeTrackingOrder = TRACKING_DATA['#VV-89240'];
+
+    // State for the dedicated Quick Place Order Modal
+    this.orderModalProduct = null;
+    this.orderModalSize = 'L';
+    this.orderModalQty = 1;
+    this.orderModalPincode = '110001';
   }
 
   loadCart() {
@@ -277,7 +661,7 @@ class AppState {
     try {
       localStorage.setItem('vyra_cart', JSON.stringify(this.cart));
     } catch (e) {
-      console.warn('Could not save cart to localStorage', e);
+      console.warn('Could not save cart', e);
     }
   }
 
@@ -302,7 +686,6 @@ class AppState {
 
     this.saveCart();
     renderCart();
-    showToast(`Added "${product.title}" (${chosenSize}) to bag!`, 'shopping-bag');
   }
 
   updateQty(index, delta) {
@@ -342,7 +725,7 @@ class AppState {
 const state = new AppState();
 
 // =================================================================
-// 5. DOM ELEMENTS & LISTENERS
+// 6. DOM INITIALIZATION
 // =================================================================
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) {
@@ -353,25 +736,255 @@ document.addEventListener('DOMContentLoaded', () => {
   initOfferPopup();
   initSearchAndFilter();
   initCartDrawer();
+  initOrderModal();
   initFlashTimer();
   initTracker();
   initProfile();
   
-  // Render initial product grids
   renderProducts();
   renderCart();
   renderStealsUnder25();
   updateCategoryCounts();
   updateWishlistCount();
 
-  // Show Offer Popup automatically on first open (with slick 650ms delay)
   setTimeout(() => {
     openPopup();
   }, 650);
 });
 
 // =================================================================
-// 6. POP-UP MODAL (LATEST OFFERS ON OPEN)
+// 7. PLACE ORDER & PINCODE DELIVERY CHECKER MODAL
+// =================================================================
+function initOrderModal() {
+  const modal = document.getElementById('orderModal');
+  const closeBtn = document.getElementById('closeOrderModalBtn');
+  const pincodeInput = document.getElementById('deliveryPincodeInput');
+  const checkPincodeBtn = document.getElementById('checkPincodeBtn');
+  const pincodeStatusBox = document.getElementById('pincodeStatusBox');
+  const orderForm = document.getElementById('instantOrderForm');
+  const applyPromoBtn = document.getElementById('orderApplyCouponBtn');
+  const promoInput = document.getElementById('orderPromoInput');
+
+  // Close modal
+  const closeModal = () => {
+    modal.classList.remove('active');
+    setTimeout(() => { modal.style.display = 'none'; }, 200);
+  };
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Check Pincode button handler
+  checkPincodeBtn.addEventListener('click', () => {
+    const pin = pincodeInput.value.trim();
+    state.orderModalPincode = pin;
+    const result = verifyPincode(pin);
+
+    if (!result.valid) {
+      pincodeStatusBox.className = 'pincode-status-box unserviceable';
+      pincodeStatusBox.innerHTML = `<i data-lucide="alert-circle"></i> <span>${result.message}</span>`;
+      pincodeStatusBox.style.display = 'flex';
+      if (window.lucide) lucide.createIcons();
+      return;
+    }
+
+    if (result.serviceable) {
+      pincodeStatusBox.className = 'pincode-status-box serviceable';
+      pincodeStatusBox.innerHTML = `<i data-lucide="check-circle-2"></i> <span>${result.message}</span>`;
+      pincodeStatusBox.style.display = 'flex';
+      showToast(`Delivery available to PIN ${pin}!`, 'truck');
+    } else {
+      pincodeStatusBox.className = 'pincode-status-box unserviceable';
+      pincodeStatusBox.innerHTML = `<i data-lucide="x-circle"></i> <span>${result.message}</span>`;
+      pincodeStatusBox.style.display = 'flex';
+    }
+
+    if (window.lucide) lucide.createIcons();
+  });
+
+  // Apply Coupon inside Order Modal
+  applyPromoBtn.addEventListener('click', () => {
+    const code = promoInput.value.trim().toUpperCase();
+    if (COUPONS[code]) {
+      state.appliedCoupon = COUPONS[code];
+      showToast(`Applied ${COUPONS[code].label}!`, 'sparkles');
+      updateOrderModalCalculations();
+    } else {
+      showToast('Invalid coupon code! Try VYRATEEN35 or FREEDELIVERY', 'alert-circle');
+    }
+  });
+
+  // Form submit -> Confirm & Place Order!
+  orderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!state.orderModalProduct) return;
+
+    const pin = pincodeInput.value.trim();
+    const pinCheck = verifyPincode(pin);
+
+    if (!pinCheck.valid || !pinCheck.serviceable) {
+      showToast('Please enter a serviceable 6-digit delivery PIN code.', 'alert-triangle');
+      pincodeInput.focus();
+      return;
+    }
+
+    const customerName = document.getElementById('orderCustomerName').value.trim();
+    const customerPhone = document.getElementById('orderCustomerPhone').value.trim();
+    const customerAddress = document.getElementById('orderCustomerAddress').value.trim();
+    const paymentMode = document.getElementById('orderPaymentMethod').value.toUpperCase();
+
+    // Generate real-time Order ID
+    const randomNum = Math.floor(10000 + Math.random() * 90000);
+    const orderId = `#VV-${randomNum}`;
+
+    const subtotal = state.orderModalProduct.price * state.orderModalQty;
+    let discount = 0;
+    if (state.appliedCoupon && state.appliedCoupon.type === 'percent') {
+      discount = (subtotal * state.appliedCoupon.discountPercent) / 100;
+    }
+    const finalAmount = Math.max(0, subtotal - discount);
+
+    // Add to Tracking Database
+    TRACKING_DATA[orderId] = {
+      orderId: orderId,
+      date: 'Just now',
+      eta: `Expected in ${pinCheck.days || '2-3 business days'} to PIN ${pin}`,
+      status: `Order Placed (${paymentMode}) • Quality Check In-Progress`,
+      step: 0,
+      carrier: 'BlueDart Express Air VIP',
+      address: `${customerAddress}, PIN: ${pin} (Ph: ${customerPhone})`,
+      items: [
+        {
+          title: state.orderModalProduct.title,
+          size: state.orderModalSize,
+          qty: state.orderModalQty,
+          price: state.orderModalProduct.price
+        }
+      ],
+      total: formatINR(finalAmount)
+    };
+
+    state.activeTrackingOrder = TRACKING_DATA[orderId];
+
+    // Add also to cart / order history
+    state.addToCart(state.orderModalProduct, state.orderModalSize);
+
+    closeModal();
+    showToast(`Order Confirmed! Tracking ID: ${orderId}`, 'package-check');
+
+    // Smoothly redirect straight into the Live Order Tracker!
+    setTimeout(() => {
+      const trackerNavBtn = document.querySelector('[data-view="tracker"]');
+      if (trackerNavBtn) trackerNavBtn.click();
+
+      const trackingInput = document.getElementById('trackingCodeInput');
+      if (trackingInput) trackingInput.value = orderId;
+      renderTrackerResult(state.activeTrackingOrder);
+    }, 450);
+  });
+}
+
+function openOrderModal(product, preferredSize = null) {
+  state.orderModalProduct = product;
+  state.orderModalSize = preferredSize || product.sizes[0];
+  state.orderModalQty = 1;
+
+  const modal = document.getElementById('orderModal');
+  const preview = document.getElementById('orderProductPreview');
+
+  preview.innerHTML = `
+    <img src="${product.image}" alt="${product.title}" class="order-product-thumb">
+    <div class="order-product-details">
+      <h4>${product.title}</h4>
+      <div class="order-product-meta">
+        <span class="neon-chip">${product.gsm}</span>
+        <span style="font-size: 0.75rem; color: var(--text-muted);"><i data-lucide="shield-check" style="width:12px; height:12px; vertical-align:middle;"></i> 100% Pre-Shrunk</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.6rem; margin-top: 0.35rem; flex-wrap: wrap;">
+        <span style="font-size: 0.775rem; font-weight: 700; color: var(--text-secondary);">Size:</span>
+        <div class="size-selector-compact" id="modalSizeRow">
+          ${product.sizes.map(sz => `
+            <button type="button" class="size-btn ${sz === state.orderModalSize ? 'active' : ''}" data-modalsize="${sz}">${sz}</button>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="order-product-controls">
+        <div style="display: flex; align-items: baseline; gap: 0.45rem;">
+          <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #09090b;">${formatINR(product.price)}</span>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: line-through; color: var(--text-dim);">${formatINR(product.origPrice)}</span>
+        </div>
+
+        <div class="qty-control">
+          <button type="button" class="qty-btn" id="modalQtyDec">-</button>
+          <span class="qty-number" id="modalQtyVal">1</span>
+          <button type="button" class="qty-btn" id="modalQtyInc">+</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Attach size and quantity handlers in preview
+  preview.querySelectorAll('[data-modalsize]').forEach(btn => {
+    btn.onclick = () => {
+      preview.querySelectorAll('[data-modalsize]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.orderModalSize = btn.dataset.modalsize;
+    };
+  });
+
+  document.getElementById('modalQtyDec').onclick = () => {
+    if (state.orderModalQty > 1) {
+      state.orderModalQty -= 1;
+      document.getElementById('modalQtyVal').textContent = state.orderModalQty;
+      updateOrderModalCalculations();
+    }
+  };
+
+  document.getElementById('modalQtyInc').onclick = () => {
+    state.orderModalQty += 1;
+    document.getElementById('modalQtyVal').textContent = state.orderModalQty;
+    updateOrderModalCalculations();
+  };
+
+  updateOrderModalCalculations();
+
+  // Run initial pincode check on pre-filled pincode (110001)
+  const pinInput = document.getElementById('deliveryPincodeInput');
+  if (pinInput && pinInput.value) {
+    document.getElementById('checkPincodeBtn').click();
+  }
+
+  modal.style.display = 'flex';
+  modal.classList.add('active');
+  if (window.lucide) lucide.createIcons();
+}
+
+function updateOrderModalCalculations() {
+  if (!state.orderModalProduct) return;
+
+  const subtotal = state.orderModalProduct.price * state.orderModalQty;
+  let discount = 0;
+  if (state.appliedCoupon && state.appliedCoupon.type === 'percent') {
+    discount = (subtotal * state.appliedCoupon.discountPercent) / 100;
+  } else if (state.appliedCoupon && state.appliedCoupon.type === 'flat') {
+    discount = Math.min(subtotal, state.appliedCoupon.discountFlat);
+  }
+
+  const finalTotal = Math.max(0, subtotal - discount);
+
+  document.getElementById('modalQtyDisplay').textContent = state.orderModalQty;
+  document.getElementById('modalItemSubtotal').textContent = formatINR(subtotal);
+  document.getElementById('modalDiscountDisplay').textContent = `-${formatINR(discount)}`;
+  document.getElementById('modalFinalTotal').textContent = formatINR(finalTotal);
+  document.getElementById('btnPayAmount').textContent = formatINR(finalTotal);
+}
+
+// =================================================================
+// 8. POP-UP MODAL (LATEST OFFERS ON OPEN)
 // =================================================================
 function initOfferPopup() {
   const modal = document.getElementById('offersPopupModal');
@@ -389,39 +1002,32 @@ function initOfferPopup() {
   closeBtn.addEventListener('click', closeModal);
   skipBtn.addEventListener('click', closeModal);
 
-  // Close when clicking outside card
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
 
-  // Re-open triggers
   if (openOffersBtn) openOffersBtn.addEventListener('click', openPopup);
   if (heroClaimBtn) heroClaimBtn.addEventListener('click', openPopup);
 
-  // Copy Promo Code Button
   copyBtn.addEventListener('click', () => {
     const code = document.getElementById('popupPromoCode').innerText;
     navigator.clipboard.writeText(code).then(() => {
       copyBtn.innerHTML = `<i data-lucide="check"></i> Copied!`;
       lucide.createIcons();
-      showToast(`Promo Code ${code} copied to clipboard!`, 'check-circle');
+      showToast(`Promo Code ${code} copied!`, 'check-circle');
       setTimeout(() => {
         copyBtn.innerHTML = `<i data-lucide="copy"></i> Copy Code`;
         lucide.createIcons();
       }, 2000);
-    }).catch(() => {
-      showToast(`Use code: ${code}`, 'tag');
     });
   });
 
-  // Claim & Shop Now Button
   claimBtn.addEventListener('click', () => {
     state.appliedCoupon = COUPONS['VYRATEEN35'];
     closeModal();
     showToast('Code VYRATEEN35 applied! 35% discount active.', 'sparkles');
     renderCart();
     
-    // Smooth scroll down to catalog fits
     const catalogEl = document.getElementById('catalog');
     if (catalogEl) {
       catalogEl.scrollIntoView({ behavior: 'smooth' });
@@ -438,7 +1044,7 @@ function openPopup() {
 }
 
 // =================================================================
-// 7. VIEW NAVIGATION (Home, Offers, Tracker, Profile)
+// 9. VIEW NAVIGATION
 // =================================================================
 function initNavigation() {
   const navButtons = document.querySelectorAll('[data-view]');
@@ -491,7 +1097,7 @@ function initNavigation() {
 }
 
 // =================================================================
-// 8. SEARCH, FILTER & SORT ENGINE
+// 10. SEARCH, FILTER & SORT ENGINE (Pure Clothing Categories)
 // =================================================================
 function initSearchAndFilter() {
   const searchInput = document.getElementById('searchInput');
@@ -542,6 +1148,8 @@ function initSearchAndFilter() {
 function updateCategoryCounts() {
   const countAll = document.getElementById('countAll');
   if (countAll) countAll.textContent = PRODUCTS.length;
+  const totalDropsCount = document.getElementById('totalDropsCount');
+  if (totalDropsCount) totalDropsCount.textContent = PRODUCTS.length;
 }
 
 function updateWishlistCount() {
@@ -550,7 +1158,7 @@ function updateWishlistCount() {
 }
 
 // =================================================================
-// 9. PRODUCT RENDERING & CARD GENERATION (INR ₹)
+// 11. PRODUCT RENDERING & ADD TO BAG / ORDER POP-UP TRIGGER
 // =================================================================
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
@@ -630,7 +1238,8 @@ function renderProducts() {
               <span class="card-orig-price">${formatINR(product.origPrice)}</span>
             </div>
 
-            <button class="add-cart-action-btn" data-add-cart="${product.id}">
+            <!-- ADD TO BAG: Triggers the Quick Place Order Screen Modal! -->
+            <button class="add-cart-action-btn" data-add-cart="${product.id}" title="Order this fit">
               <i data-lucide="shopping-bag"></i> Add to Bag
             </button>
           </div>
@@ -653,6 +1262,7 @@ function attachCardEvents() {
     });
   });
 
+  // When clicking "Add to Bag": Open the Place Order / Pincode delivery popup!
   document.querySelectorAll('[data-add-cart]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const card = btn.closest('.product-card');
@@ -662,7 +1272,8 @@ function attachCardEvents() {
       const chosenSize = activeSizeBtn ? activeSizeBtn.dataset.size : product.sizes[0];
 
       if (product) {
-        state.addToCart(product, chosenSize);
+        // Open the dedicated Place Order Modal with Pincode checker & total breakdown
+        openOrderModal(product, chosenSize);
       }
     });
   });
@@ -682,17 +1293,18 @@ function attachCardEvents() {
     });
   });
 
+  // Hero Quick Add
   const heroBtn = document.querySelector('.quick-add-hero');
   if (heroBtn) {
     heroBtn.onclick = () => {
       const p = PRODUCTS.find(item => item.id === 1);
-      if (p) state.addToCart(p, 'L');
+      if (p) openOrderModal(p, 'L');
     };
   }
 }
 
 // =================================================================
-// 10. QUICK VIEW MODAL (INR ₹)
+// 12. QUICK VIEW MODAL
 // =================================================================
 function openQuickView(productId) {
   const product = PRODUCTS.find(p => p.id === productId);
@@ -729,7 +1341,7 @@ function openQuickView(productId) {
       </div>
 
       <button class="btn btn-primary btn-block btn-lg" id="qvAddToCartBtn">
-        <i data-lucide="shopping-bag"></i> Add to Bag (${formatINR(product.price)})
+        <i data-lucide="shopping-bag"></i> Order Now (${formatINR(product.price)})
       </button>
     </div>
   `;
@@ -749,9 +1361,9 @@ function openQuickView(productId) {
   document.getElementById('qvAddToCartBtn').addEventListener('click', () => {
     const activeSize = container.querySelector('#qvSizeSelector .size-btn.active');
     const sz = activeSize ? activeSize.dataset.size : product.sizes[0];
-    state.addToCart(product, sz);
     modal.classList.remove('active');
     setTimeout(() => { modal.style.display = 'none'; }, 200);
+    openOrderModal(product, sz);
   });
 
   const closeBtn = document.getElementById('closeQuickViewBtn');
@@ -769,7 +1381,7 @@ function openQuickView(productId) {
 }
 
 // =================================================================
-// 11. CART DRAWER & CHECKOUT ENGINE (INR ₹)
+// 13. CART DRAWER & CHECKOUT ENGINE
 // =================================================================
 function initCartDrawer() {
   const cartOverlay = document.getElementById('cartDrawerOverlay');
@@ -835,38 +1447,10 @@ function initCartDrawer() {
       return;
     }
 
-    const randomNum = Math.floor(10000 + Math.random() * 90000);
-    const newOrderId = `#VV-${randomNum}`;
-    const subtotal = state.cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-
-    TRACKING_DATA[newOrderId] = {
-      orderId: newOrderId,
-      date: 'Just now',
-      eta: 'Estimated in 2-3 business days across India',
-      status: 'Order Confirmed & UPI / Card Verified',
-      step: 0,
-      carrier: 'BlueDart / Delhivery Priority Air Cargo',
-      address: 'Room 204, North Campus Boys Hostel, New Delhi',
-      items: [...state.cart],
-      total: formatINR(subtotal)
-    };
-
-    state.activeTrackingOrder = TRACKING_DATA[newOrderId];
-
-    state.cart = [];
-    state.saveCart();
+    // Open first item or active cart in Order Modal
     closeDrawer();
-
-    showToast(`Order Placed! Tracking ID: ${newOrderId}`, 'package-check');
-
-    setTimeout(() => {
-      const trackerNavBtn = document.querySelector('[data-view="tracker"]');
-      if (trackerNavBtn) trackerNavBtn.click();
-
-      const trackingInput = document.getElementById('trackingCodeInput');
-      if (trackingInput) trackingInput.value = newOrderId;
-      renderTrackerResult(state.activeTrackingOrder);
-    }, 400);
+    const firstItem = PRODUCTS.find(p => p.id === state.cart[0].id) || PRODUCTS[0];
+    openOrderModal(firstItem, state.cart[0].size);
   });
 }
 
@@ -896,7 +1480,6 @@ function renderCart() {
   if (cartDrawerCountEl) cartDrawerCountEl.textContent = totalItems;
   if (cartTotalPreview) cartTotalPreview.textContent = formatINR(subtotal);
 
-  // Free shipping threshold (₹999)
   const FREE_SHIPPING_THRESHOLD = 999;
   let shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD || subtotal === 0 ? 0 : 99;
 
@@ -985,7 +1568,7 @@ function renderCart() {
 }
 
 // =================================================================
-// 12. LIVE ORDER TRACKER VIEW (Indian Cities & Hubs)
+// 14. LIVE ORDER TRACKER VIEW
 // =================================================================
 function initTracker() {
   const form = document.getElementById('trackerForm');
@@ -1051,9 +1634,9 @@ function renderTrackerResult(order) {
   }).join('');
 
   const itemsHtml = order.items.map(item => `
-    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
       <span>${item.qty}x <strong>${item.title}</strong> (Size ${item.size})</span>
-      <span style="font-family: var(--font-mono); color: var(--accent-lime);">${formatINR(item.price)}</span>
+      <span style="font-family: var(--font-mono); color: #09090b; font-weight: 800;">${formatINR(item.price)}</span>
     </div>
   `).join('');
 
@@ -1061,7 +1644,7 @@ function renderTrackerResult(order) {
     <div class="tracker-status-header">
       <div>
         <span class="order-badge-pill">${order.orderId}</span>
-        <h3 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.5rem; color: #fff;">${order.status}</h3>
+        <h3 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.5rem; color: #09090b;">${order.status}</h3>
       </div>
       <div class="eta-box">
         <span class="eta-title">DELIVERY ESTIMATE</span>
@@ -1085,11 +1668,11 @@ function renderTrackerResult(order) {
       </div>
       <div class="meta-col">
         <span class="meta-label">Total Value</span>
-        <span class="meta-val" style="color: var(--accent-lime);">${order.total}</span>
+        <span class="meta-val" style="color: #09090b;">${order.total}</span>
       </div>
     </div>
 
-    <div style="margin-top: 1.5rem; background: #111520; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+    <div style="margin-top: 1.5rem; background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
       <h4 style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase;">Parcel Manifest</h4>
       ${itemsHtml}
     </div>
@@ -1099,7 +1682,7 @@ function renderTrackerResult(order) {
 }
 
 // =================================================================
-// 13. USER PROFILE & AURA POINTS TABS (INR ₹)
+// 15. USER PROFILE & AURA POINTS TABS
 // =================================================================
 function initProfile() {
   const tabs = document.querySelectorAll('.p-tab');
@@ -1114,14 +1697,14 @@ function initProfile() {
           <div class="oh-header">
             <div>
               <span class="oh-id">#VV-89240</span>
-              <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Placed Today, 11:20 AM • 2 Items</p>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Placed Today, 11:20 AM • 2 Fits</p>
             </div>
             <span class="oh-status transit">⚡ Out For Delivery</span>
           </div>
           <div class="oh-items-preview">
             <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=150&q=80" class="oh-thumb">
             <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=150&q=80" class="oh-thumb">
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Total: <strong style="color: var(--accent-lime);">₹2,298</strong></span>
+            <span style="font-size: 0.85rem; color: var(--text-main); font-weight: 700;">Total: <strong style="color: #09090b;">₹2,298</strong></span>
           </div>
         </div>
 
@@ -1129,13 +1712,13 @@ function initProfile() {
           <div class="oh-header">
             <div>
               <span class="oh-id">#VV-45120</span>
-              <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Delivered Oct 28, 2026 • 1 Item</p>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Delivered Oct 28, 2026 • 1 Fit</p>
             </div>
             <span class="oh-status delivered"><i data-lucide="check"></i> Delivered</span>
           </div>
           <div class="oh-items-preview">
             <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=150&q=80" class="oh-thumb">
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Cyber-Tokyo Graphic Tee (Size L)</span>
+            <span style="font-size: 0.85rem; color: var(--text-secondary);">Cyber-Tokyo Graphic Tee (Size L)</span>
           </div>
         </div>
       `;
@@ -1147,12 +1730,12 @@ function initProfile() {
         container.innerHTML = `
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
             ${wishlistProducts.map(p => `
-              <div style="background: #111520; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem;">
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem;">
                 <img src="${p.image}" style="width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 0.5rem;">
-                <h5 style="font-size: 0.85rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.title}</h5>
-                <span style="font-family: var(--font-mono); color: var(--accent-lime); font-size: 0.95rem; font-weight: 800;">${formatINR(p.price)}</span>
-                <button class="btn btn-primary btn-block" style="padding: 0.35rem; font-size: 0.75rem; margin-top: 0.5rem;" onclick="state.addToCart(PRODUCTS.find(x => x.id === ${p.id}))">
-                  Add to Bag
+                <h5 style="font-size: 0.85rem; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #09090b;">${p.title}</h5>
+                <span style="font-family: var(--font-mono); color: #09090b; font-size: 0.95rem; font-weight: 800;">${formatINR(p.price)}</span>
+                <button class="btn btn-primary btn-block" style="padding: 0.4rem; font-size: 0.75rem; margin-top: 0.5rem;" onclick="openOrderModal(PRODUCTS.find(x => x.id === ${p.id}))">
+                  Order Fit
                 </button>
               </div>
             `).join('')}
@@ -1161,8 +1744,8 @@ function initProfile() {
       }
     } else if (tabType === 'rewards') {
       container.innerHTML = `
-        <div style="background: #111520; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem;">
-          <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent-lime); margin-bottom: 0.5rem;">Your VYRA Rewards Balance: 1,450 Coins (Value: ₹145)</h3>
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 800; color: #09090b; margin-bottom: 0.5rem;">Your VYRA Rewards Balance: 1,450 Coins (Value: ₹145)</h3>
           <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">Earn 10 coins for every ₹100 spent. Redeem for store credits, free shipping vouchers, or VIP drop access.</p>
           <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
             <button class="btn btn-glass" style="font-size: 0.8rem;">Redeem ₹250 Coupon (2,000 Coins)</button>
@@ -1187,7 +1770,7 @@ function initProfile() {
 }
 
 // =================================================================
-// 14. FLASH SALE UNDER ₹999 & COUNTDOWN TIMER
+// 16. FLASH SALE UNDER ₹999 & COUNTDOWN TIMER
 // =================================================================
 function renderStealsUnder25() {
   const container = document.getElementById('under25Grid');
@@ -1195,17 +1778,17 @@ function renderStealsUnder25() {
 
   const under999 = PRODUCTS.filter(p => p.price <= 999);
   container.innerHTML = under999.map(p => `
-    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; padding: 0.85rem;">
+    <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; padding: 0.85rem; box-shadow: var(--shadow-xs);">
       <img src="${p.image}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 0.75rem;">
       <span class="neon-chip" style="font-size: 0.65rem;">${p.gsm}</span>
-      <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0.35rem 0;">${p.title}</h4>
+      <h4 style="font-size: 0.95rem; font-weight: 800; margin: 0.35rem 0; color: #09090b;">${p.title}</h4>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
         <div>
-          <span style="font-family: var(--font-mono); color: var(--accent-lime); font-weight: 800; font-size: 1.1rem;">${formatINR(p.price)}</span>
+          <span style="font-family: var(--font-mono); color: #09090b; font-weight: 800; font-size: 1.1rem;">${formatINR(p.price)}</span>
           <span style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-dim); margin-left: 4px;">${formatINR(p.origPrice)}</span>
         </div>
-        <button class="pill-btn-sm" onclick="state.addToCart(PRODUCTS.find(x => x.id === ${p.id}))">
-          Quick Add
+        <button class="pill-btn-sm" style="background: #09090b; color: #fff;" onclick="openOrderModal(PRODUCTS.find(x => x.id === ${p.id}))">
+          Order Now
         </button>
       </div>
     </div>
@@ -1229,7 +1812,7 @@ function initFlashTimer() {
 }
 
 // =================================================================
-// 15. FLOATING TOAST NOTIFICATION UTILITY
+// 17. FLOATING TOAST NOTIFICATION UTILITY
 // =================================================================
 function showToast(message, iconName = 'bell') {
   const container = document.getElementById('toastContainer');

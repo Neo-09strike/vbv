@@ -11,7 +11,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-dark text-light">
+<body>
 
   <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
   <aside class="announcement-bar" role="region" aria-label="Announcement">
@@ -39,7 +39,7 @@
         <input 
           type="search" 
           id="searchInput" 
-          placeholder="Search oversized tees, heavy hoodies, baggy cargoes..."
+          placeholder="Search oversized tees, heavy hoodies, baggy cargoes, jackets..."
           autocomplete="off"
         >
         <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">
@@ -110,81 +110,54 @@
     <!-- VIEW 1: HOME PAGE -->
     <section id="homeView" class="view active">
       
-      <!-- HERO BANNER -->
-      <section class="hero-section">
-        <div class="container hero-grid">
-          <div class="hero-content">
-            <div class="hero-tag">
+      <!-- COMPACT HERO STRIP (Sleeker & Shorter) -->
+      <section class="hero-section compact-hero">
+        <div class="container hero-compact-grid">
+          <div class="hero-content-compact">
+            <div class="hero-tag-row">
               <span class="neon-chip">GEN-Z APPROVED QUALITY</span>
               <span class="price-chip">40-60% OFF RETAIL</span>
+              <span class="ticker-pill">Brand: ₹3,999 vs VYRA: ₹1,499</span>
             </div>
-            <h1 class="hero-title">
-              Top Tier Drip. <br>
-              <span class="gradient-text">Pocket-Money Friendly.</span>
+            <h1 class="hero-title-compact">
+              Top Tier Streetwear. <span class="gradient-text">Pocket-Money Friendly.</span>
             </h1>
-            <p class="hero-subtitle">
-              Why pay ₹4,000 for hype brand logos? VIPUL brings you 280+ GSM heavyweight cotton tees, waterproof tech cargoes, and heavy fleece hoodies sourced directly from ethical mills across India. Zero middlemen, zero cap.
+            <p class="hero-sub-compact">
+              Heavyweight 280–380 GSM cotton, drop-shoulder boxy cuts & anti-shrink guarantee direct from Indian mills. Zero middlemen, zero cap.
             </p>
-            <div class="hero-actions">
-              <a href="#catalog" class="btn btn-primary" id="exploreFitsBtn">
-                <span>Explore The Fits</span>
-                <i data-lucide="arrow-right"></i>
+            <div class="hero-quick-actions">
+              <a href="#catalog" class="btn btn-primary btn-sm" id="exploreFitsBtn">
+                <span>Explore The Fits (20 Drops)</span>
+                <i data-lucide="arrow-down"></i>
               </a>
-              <button class="btn btn-glass" id="heroClaimOfferBtn">
-                <i data-lucide="sparkles"></i>
-                <span>Claim ₹500 Teen Drop Code</span>
+              <button class="btn btn-glass btn-sm" id="heroClaimOfferBtn">
+                <i data-lucide="tag"></i>
+                <span>Code: <strong>VYRATEEN35</strong> (-35%)</span>
               </button>
-            </div>
-            
-            <div class="quality-perks">
-              <div class="perk-item">
-                <i data-lucide="shield-check"></i>
-                <div>
-                  <strong>300 GSM Heavyweight</strong>
-                  <span>No see-through fabrics</span>
-                </div>
-              </div>
-              <div class="perk-item">
-                <i data-lucide="refresh-cw"></i>
-                <div>
-                  <strong>Pre-Shrunk 100% Cotton</strong>
-                  <span>Washes without distortion</span>
-                </div>
-              </div>
-              <div class="perk-item">
-                <i data-lucide="zap"></i>
-                <div>
-                  <strong>Student Price Match</strong>
-                  <span>Best Indian prices, no markup</span>
-                </div>
-              </div>
             </div>
           </div>
 
-          <!-- Hero Promo Card -->
-          <div class="hero-card-wrapper">
-            <div class="deal-card-highlight">
-              <div class="deal-badge">🔥 STEAL OF THE DAY</div>
-              <div class="deal-image-box">
-                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80" alt="Cyberpunk Heavyweight Hoodie">
-                <div class="timer-float">
-                  <span class="timer-label">Flash Sale Ends In:</span>
-                  <div class="timer-digits" id="flashTimer">03:47:19</div>
-                </div>
+          <!-- Compact Mini Steal Card -->
+          <div class="steal-mini-card">
+            <div class="steal-mini-header">
+              <span class="steal-mini-badge">🔥 STEAL OF THE DAY</span>
+              <div class="mini-timer">
+                <i data-lucide="clock"></i>
+                <span id="flashTimer">03:47:19</span>
               </div>
-              <div class="deal-info">
-                <div class="deal-tags">
-                  <span class="spec-tag">380 GSM Fleece</span>
-                  <span class="discount-pill">-57% OFF</span>
-                </div>
-                <h3>Acid-Wash "Overdrive" Boxy Hoodie</h3>
-                <div class="price-row">
+            </div>
+            <div class="steal-mini-body">
+              <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=300&q=80" alt="Acid-Wash Boxy Hoodie" class="steal-mini-thumb">
+              <div class="steal-mini-info">
+                <span class="spec-tag">380 GSM French Terry</span>
+                <h4 class="steal-mini-title">Acid-Wash Boxy Hoodie</h4>
+                <div class="steal-mini-price">
                   <span class="curr-price">₹1,499</span>
                   <span class="orig-price">₹3,499</span>
                   <span class="savings">Save ₹2,000</span>
                 </div>
-                <button class="btn btn-primary btn-block quick-add-hero" data-id="1">
-                  <i data-lucide="shopping-cart"></i> Quick Add to Bag
+                <button class="btn btn-primary btn-block btn-xs quick-add-hero" data-id="1">
+                  <i data-lucide="shopping-bag"></i> Quick Order
                 </button>
               </div>
             </div>
@@ -192,25 +165,13 @@
         </div>
       </section>
 
-      <!-- QUALITY COMPARISON TICKER -->
-      <section class="trust-ticker">
-        <div class="container ticker-container">
-          <div class="ticker-box">
-            <span class="brand-x">Traditional Brand: ₹3,999</span>
-            <span class="vs">VS</span>
-            <span class="brand-dv">VYRA BY VIPUL: ₹1,499</span>
-            <span class="ticker-note">(Same 380 GSM Fabric Mill, Zero Retail Markup)</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- CATEGORY PILLS & FILTERS -->
+      <!-- CATEGORY PILLS & FILTERS (CLOTHING FASHION ONLY) -->
       <section class="catalog-section" id="catalog">
         <div class="container">
           <div class="section-header">
             <div>
-              <span class="eyebrow">CURATED TEEN COLLECTION</span>
-              <h2 class="section-title">Upgrade Your Aesthetic</h2>
+              <span class="eyebrow">CURATED TEEN CLOTHING COLLECTION</span>
+              <h2 class="section-title">Upgrade Your Aesthetic (<span id="totalDropsCount">20</span> Fits)</h2>
             </div>
             
             <!-- Sort dropdown -->
@@ -226,26 +187,26 @@
             </div>
           </div>
 
-          <!-- Category Buttons -->
+          <!-- Category Buttons (Clothing Only) -->
           <div class="category-scroll-container">
             <div class="category-pills" id="categoryPills">
               <button class="cat-pill active" data-category="all">
-                <i data-lucide="grid"></i> All Fits (<span id="countAll">0</span>)
+                <i data-lucide="grid"></i> All Fits (<span id="countAll">20</span>)
               </button>
               <button class="cat-pill" data-category="tees">
                 <i data-lucide="shirt"></i> Graphic & Boxy Tees
               </button>
               <button class="cat-pill" data-category="hoodies">
-                <i data-lucide="wind"></i> Heavy Hoodies
+                <i data-lucide="wind"></i> Heavy Hoodies & Crewnecks
               </button>
               <button class="cat-pill" data-category="cargoes">
-                <i data-lucide="layers"></i> Baggy Cargoes & Denim
+                <i data-lucide="layers"></i> Cargo Pants & Parachutes
+              </button>
+              <button class="cat-pill" data-category="denim">
+                <i data-lucide="compass"></i> Denim, Jeans & Trousers
               </button>
               <button class="cat-pill" data-category="jackets">
-                <i data-lucide="shield"></i> Puffer & Varsity
-              </button>
-              <button class="cat-pill" data-category="accessories">
-                <i data-lucide="watch"></i> Y2K Caps & Bags
+                <i data-lucide="shield"></i> Jackets, Puffers & Flannels
               </button>
             </div>
           </div>
@@ -613,6 +574,111 @@
           <i data-lucide="shield-check"></i> 14-Day Free Exchange Guarantee • Student Safe
         </p>
       </div>
+    </div>
+  </div>
+
+  <!-- ================= PLACE ORDER & PINCODE DELIVERY CHECKER MODAL ================= -->
+  <div id="orderModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle" style="display: none;">
+    <div class="modal-card order-modal-card">
+      <button class="modal-close-btn" id="closeOrderModalBtn" aria-label="Close checkout modal">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="order-modal-header">
+        <h2 id="orderModalTitle"><i data-lucide="package"></i> Quick Order Checkout</h2>
+        <p>Review garment specs, verify Indian PIN code delivery, and place your order in 1 step.</p>
+      </div>
+
+      <!-- Active Product Card Preview -->
+      <div class="order-product-preview" id="orderProductPreview">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Pincode Delivery Availability Checker -->
+      <div class="pincode-section">
+        <div class="pincode-label">
+          <i data-lucide="map-pin"></i>
+          <span>Check Delivery Availability (PIN Code)</span>
+        </div>
+        <div class="pincode-input-row">
+          <input 
+            type="text" 
+            id="deliveryPincodeInput" 
+            placeholder="Enter 6-digit Pincode (e.g. 110001, 400001, 560001)" 
+            maxlength="6"
+            value="110001"
+          >
+          <button type="button" class="btn btn-primary" id="checkPincodeBtn" style="padding: 0.65rem 1.25rem;">
+            Check PIN
+          </button>
+        </div>
+        <div id="pincodeStatusBox" class="pincode-status-box">
+          <!-- Live result injected here -->
+        </div>
+      </div>
+
+      <!-- Customer Details Form -->
+      <form id="instantOrderForm">
+        <div class="delivery-form-grid">
+          <div class="form-group">
+            <label for="orderCustomerName">Student / Customer Name *</label>
+            <input type="text" id="orderCustomerName" placeholder="e.g. Rahul Sharma" required value="Rahul Sharma">
+          </div>
+          <div class="form-group">
+            <label for="orderCustomerPhone">Mobile Number (for live SMS updates) *</label>
+            <input type="tel" id="orderCustomerPhone" placeholder="10-digit mobile number" required value="9876543210" maxlength="10">
+          </div>
+          <div class="form-group full-width">
+            <label for="orderCustomerAddress">Delivery Address / Hostel / Campus Flat *</label>
+            <input type="text" id="orderCustomerAddress" placeholder="Room/Flat No., Campus/Street Name, Landmark" required value="Room 302, Tagore Hostel, University Campus">
+          </div>
+          <div class="form-group">
+            <label for="orderPaymentMethod">Payment Mode *</label>
+            <select id="orderPaymentMethod">
+              <option value="upi">UPI (GPay / PhonePe / Paytm / QR)</option>
+              <option value="cod">Cash on Delivery (COD)</option>
+              <option value="card">Debit / Credit Card / NetBanking</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="orderPromoInput">Apply Coupon Code</label>
+            <div style="display: flex; gap: 0.35rem;">
+              <input type="text" id="orderPromoInput" placeholder="e.g. VYRATEEN35" value="VYRATEEN35" style="text-transform: uppercase;">
+              <button type="button" id="orderApplyCouponBtn" class="btn btn-glass" style="padding: 0.4rem 0.75rem; font-size: 0.75rem;">Apply</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary & Price Breakdown -->
+        <div class="order-checkout-summary">
+          <div class="price-breakdown" style="margin-bottom: 0;">
+            <div class="summary-line">
+              <span>Item Price (<span id="modalQtyDisplay">1</span>x)</span>
+              <span id="modalItemSubtotal">₹1,499</span>
+            </div>
+            <div class="summary-line text-green" id="modalDiscountLine">
+              <span>Teen Promo Discount (VYRATEEN35 -35%)</span>
+              <span id="modalDiscountDisplay">-₹525</span>
+            </div>
+            <div class="summary-line">
+              <span>Express Air Delivery (BlueDart / Delhivery)</span>
+              <span id="modalShippingDisplay" style="color: var(--accent-lime); font-weight: 700;">FREE</span>
+            </div>
+            <div class="summary-line total-line">
+              <strong>Total Payable Amount</strong>
+              <strong id="modalFinalTotal" style="color: #09090b; font-size: 1.4rem;">₹974</strong>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="confirmOrderSubmitBtn">
+          <span>Confirm & Place Order (<span id="btnPayAmount">₹974</span>)</span>
+          <i data-lucide="check-circle-2"></i>
+        </button>
+        <p class="cart-guarantee" style="margin-top: 0.85rem;">
+          <i data-lucide="shield-check"></i> Safe Delivery Guarantee • 14-Day Free Exchanges • Student Safe
+        </p>
+      </form>
     </div>
   </div>
 
