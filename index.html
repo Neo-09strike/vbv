@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VYRA BY VIPUL | High-Quality Streetwear & Fits for Teens</title>
+  <title>VYRA | High-Quality Teen Streetwear & Fits (₹ INR)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -14,13 +14,18 @@
 <body>
 
   <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
-  <aside class="announcement-bar" role="region" aria-label="Announcement">
+  <aside class="announcement-bar" id="announcementBar" role="region" aria-label="Announcement">
     <div class="container announcement-inner">
       <span class="pulse-dot"></span>
-      <p>🔥 <strong>CAMPUS DROP BY VIPUL:</strong> Heavyweight cotton, anti-shrink guarantee & up to 60% OFF!</p>
-      <button id="openOffersBtn" class="pill-btn-sm" aria-label="View latest offers">
-        <i data-lucide="tag"></i> View Offers
-      </button>
+      <p>🔥 <strong>CAMPUS DROP:</strong> Heavyweight 280-380 GSM Cotton, Anti-Shrink & Up to 60% OFF in ₹ INR!</p>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button id="openOffersBtn" class="pill-btn-sm" aria-label="View latest offers">
+          <i data-lucide="tag"></i> View Offers
+        </button>
+        <button id="closeAnnouncementBtn" class="bar-close-btn" title="Dismiss banner" aria-label="Close banner">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
     </div>
   </aside>
 
@@ -30,7 +35,7 @@
       <!-- Brand Logo -->
       <a href="#" class="logo" id="navLogo">
         <span class="logo-badge">VYRA</span>
-        <span class="logo-text">VYRA <span>BY VIPUL</span></span>
+        <span class="logo-text">VYRA <span>TEEN FITS</span></span>
       </a>
 
       <!-- Search Bar -->
@@ -39,7 +44,7 @@
         <input 
           type="search" 
           id="searchInput" 
-          placeholder="Search oversized tees, heavy hoodies, baggy cargoes, jackets..."
+          placeholder="Search retro jerseys, graphic boxy tees, heavy hoodies, cargoes..."
           autocomplete="off"
         >
         <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">
@@ -55,7 +60,7 @@
         </button>
         <button class="nav-item" data-view="offers">
           <i data-lucide="flame"></i>
-          <span>Offers</span>
+          <span>Latest Offers</span>
           <span class="hot-badge">NEW</span>
         </button>
         <button class="nav-item" data-view="tracker">
@@ -123,13 +128,17 @@
               Top Tier Streetwear. <span class="gradient-text">Pocket-Money Friendly.</span>
             </h1>
             <p class="hero-sub-compact">
-              Heavyweight 280–380 GSM cotton, drop-shoulder boxy cuts & anti-shrink guarantee direct from Indian mills. Zero middlemen, zero cap.
+              Heavyweight 280–380 GSM combed cotton, jacquard athletic jerseys, drop-shoulder boxy cuts & anti-shrink guarantee direct from Indian mills. Zero middlemen, zero cap, 100% in Indian Rupees (₹).
             </p>
             <div class="hero-quick-actions">
               <a href="#catalog" class="btn btn-primary btn-sm" id="exploreFitsBtn">
-                <span>Explore The Fits (20 Drops)</span>
+                <span>Explore The Fits (28 Drops)</span>
                 <i data-lucide="arrow-down"></i>
               </a>
+              <button class="btn btn-secondary btn-sm" id="addAllHeroComboBtn" title="Add matching 3-piece full outfit combo to bag">
+                <i data-lucide="sparkles"></i>
+                <span>⚡ Add Full Outfit Combo to Bag</span>
+              </button>
               <button class="btn btn-glass btn-sm" id="heroClaimOfferBtn">
                 <i data-lucide="tag"></i>
                 <span>Code: <strong>VYRATEEN35</strong> (-35%)</span>
@@ -171,7 +180,7 @@
           <div class="section-header">
             <div>
               <span class="eyebrow">CURATED TEEN CLOTHING COLLECTION</span>
-              <h2 class="section-title">Upgrade Your Aesthetic (<span id="totalDropsCount">20</span> Fits)</h2>
+              <h2 class="section-title">Upgrade Your Aesthetic (<span id="totalDropsCount">28</span> Fits)</h2>
             </div>
             
             <!-- Sort dropdown -->
@@ -191,7 +200,10 @@
           <div class="category-scroll-container">
             <div class="category-pills" id="categoryPills">
               <button class="cat-pill active" data-category="all">
-                <i data-lucide="grid"></i> All Fits (<span id="countAll">20</span>)
+                <i data-lucide="grid"></i> All Fits (<span id="countAll">28</span>)
+              </button>
+              <button class="cat-pill" data-category="jerseys">
+                <i data-lucide="trophy"></i> Retro & Mesh Jerseys
               </button>
               <button class="cat-pill" data-category="tees">
                 <i data-lucide="shirt"></i> Graphic & Boxy Tees
@@ -206,7 +218,10 @@
                 <i data-lucide="compass"></i> Denim, Jeans & Trousers
               </button>
               <button class="cat-pill" data-category="jackets">
-                <i data-lucide="shield"></i> Jackets, Puffers & Flannels
+                <i data-lucide="shield"></i> Jackets & Varsity
+              </button>
+              <button class="cat-pill" data-category="coords">
+                <i data-lucide="copy"></i> Matching Co-ords
               </button>
             </div>
           </div>
@@ -230,7 +245,7 @@
       <section class="fabric-banner">
         <div class="container fabric-grid">
           <div class="fabric-text">
-            <span class="neon-chip">ENGINEERED BY VIPUL</span>
+            <span class="neon-chip">ENGINEERED FOR TEENS</span>
             <h2>Why Our Clothes Outlast Mall Brands 3x</h2>
             <ul class="fabric-features">
               <li>
@@ -254,7 +269,7 @@
               <li>
                 <div class="icon-circle"><i data-lucide="check"></i></div>
                 <div>
-                  <strong>Direct Student Pricing (INR):</strong> Vipul negotiates direct mill batches so teens don't get robbed by reseller markups.
+                  <strong>Direct Student Pricing (INR):</strong> We negotiate direct Indian mill batches so teens don't get robbed by reseller markups.
                 </div>
               </li>
             </ul>
@@ -457,46 +472,53 @@
 
   </main>
 
-  <!-- ================= POP-UP MODAL: LATEST OFFERS ON OPEN ================= -->
+  <!-- ================= POP-UP MODAL: LATEST OFFERS ON OPEN (MINIMIZED & SLEEK) ================= -->
   <div id="offersPopupModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
-    <div class="modal-card popup-card">
-      <button class="modal-close-btn" id="closeOffersPopup" aria-label="Close modal">
-        <i data-lucide="x"></i>
-      </button>
-
-      <div class="popup-visual">
-        <div class="neon-badge-pulse">⚡ TEEN EXCLUSIVE POP-UP</div>
-        <h2 id="popupTitle">LOCK IN YOUR FIRST DRIP AT <span class="highlight-yellow">35% OFF</span></h2>
-        <p>Premium 280-380 GSM fabrics by Vipul. Heavyweight boxy fits. No retail price gouging. Apply your verified coupon code right now:</p>
-      </div>
-
-      <div class="promo-reveal-box">
-        <div class="promo-code-container">
-          <span class="promo-label">DISCOUNT CODE</span>
-          <span class="promo-code" id="popupPromoCode">VYRATEEN35</span>
+    <div class="modal-card popup-card popup-card-minimized">
+      <div class="popup-top-controls">
+        <span class="mini-tag"><i data-lucide="zap"></i> 35% OFF DROP</span>
+        <div class="ctrl-btn-group">
+          <button class="modal-ctrl-btn" id="minimizeOffersPopup" title="Minimize offers popup" aria-label="Minimize popup">
+            <i data-lucide="minus"></i>
+          </button>
+          <button class="modal-ctrl-btn" id="closeOffersPopup" title="Close offers popup" aria-label="Close modal">
+            <i data-lucide="x"></i>
+          </button>
         </div>
-        <button class="btn btn-copy" id="popupCopyBtn">
-          <i data-lucide="copy"></i> Copy Code
+      </div>
+
+      <div class="popup-visual-mini">
+        <h3 id="popupTitle">Exclusive Offers <span class="highlight-yellow">35% OFF</span></h3>
+        <p>Use code on heavyweight fits & retro jerseys. Free express delivery over ₹999.</p>
+      </div>
+
+      <div class="promo-reveal-box-mini">
+        <span class="promo-code" id="popupPromoCode">VYRATEEN35</span>
+        <button class="btn-copy-mini" id="popupCopyBtn" title="Copy coupon">
+          <i data-lucide="copy"></i> Copy
         </button>
       </div>
 
-      <div class="perks-strip">
-        <span><i data-lucide="check-circle-2"></i> Free Sticker Pack</span>
-        <span><i data-lucide="check-circle-2"></i> 100% Pre-Shrunk</span>
-        <span><i data-lucide="check-circle-2"></i> Fast Free Delivery over ₹999</span>
-      </div>
-
-      <div class="popup-actions">
-        <button class="btn btn-primary btn-block btn-lg" id="popupClaimAndShopBtn">
-          <span>Apply 35% & Shop The Fits</span>
-          <i data-lucide="arrow-right"></i>
+      <div class="popup-actions-mini">
+        <button class="btn btn-primary btn-sm btn-block" id="popupGoOffersBtn">
+          <i data-lucide="flame"></i>
+          <span>🔥 Go to Latest Offers</span>
         </button>
-        <button class="text-link-btn" id="popupSkipBtn">
-          I'll pay regular price (Skip for now)
+        <button class="btn btn-glass btn-xs btn-block" id="popupClaimAndShopBtn">
+          <i data-lucide="shopping-bag"></i>
+          <span>⚡ Apply & Shop Home Fits</span>
         </button>
       </div>
     </div>
   </div>
+
+  <!-- ================= FLOATING MINIMIZED OFFERS PILL ================= -->
+  <button id="minimizedOffersPill" class="minimized-offers-pill" style="display: none;" title="Expand Latest Offers (35% OFF)">
+    <span class="pill-pulse"></span>
+    <i data-lucide="tag" style="width: 14px; height: 14px;"></i>
+    <span>Latest Offers: <strong>35% OFF</strong></span>
+    <i data-lucide="maximize-2" class="pill-expand-icon"></i>
+  </button>
 
   <!-- ================= CART DRAWER ================= -->
   <div id="cartDrawerOverlay" class="cart-overlay" aria-hidden="true">
@@ -531,7 +553,7 @@
       <div id="emptyCartView" class="empty-cart-state" style="display: none;">
         <i data-lucide="shopping-basket" class="empty-cart-icon"></i>
         <h4>Your bag is feeling light</h4>
-        <p>Snag a heavyweight graphic tee or cargo pants to get started.</p>
+        <p>Snag a retro jersey, heavyweight graphic tee or parachute cargo to get started.</p>
         <button class="btn btn-primary" id="startShoppingBtn">Explore The Drops</button>
       </div>
 
@@ -567,8 +589,8 @@
         </div>
 
         <button class="btn btn-primary btn-block btn-lg" id="checkoutBtn">
-          <span>Checkout Securely</span>
-          <i data-lucide="lock"></i>
+          <span>Proceed to Final Place Order (<span id="cartDrawerCheckoutTotal">₹0</span>)</span>
+          <i data-lucide="arrow-right"></i>
         </button>
         <p class="cart-guarantee">
           <i data-lucide="shield-check"></i> 14-Day Free Exchange Guarantee • Student Safe
@@ -585,13 +607,22 @@
       </button>
 
       <div class="order-modal-header">
-        <h2 id="orderModalTitle"><i data-lucide="package"></i> Quick Order Checkout</h2>
-        <p>Review garment specs, verify Indian PIN code delivery, and place your order in 1 step.</p>
+        <h2 id="orderModalTitle"><i data-lucide="package-check"></i> Final Place Order & Checkout</h2>
+        <p>Review your full order list, verify Indian PIN code delivery, and place your order in 1 step.</p>
       </div>
 
-      <!-- Active Product Card Preview -->
-      <div class="order-product-preview" id="orderProductPreview">
-        <!-- Rendered dynamically -->
+      <!-- FULL ORDER LIST CONTAINER -->
+      <div class="order-items-section">
+        <div class="order-items-header">
+          <div class="order-items-title-box">
+            <i data-lucide="shopping-bag"></i>
+            <h4>Full Order List (<span id="modalOrderItemsCount">0</span> items)</h4>
+          </div>
+          <span class="order-items-subtitle">Review sizes & adjust quantities</span>
+        </div>
+        <div class="checkout-order-list" id="modalOrderItemsList">
+          <!-- Dynamically populated with all items in the order -->
+        </div>
       </div>
 
       <!-- Pincode Delivery Availability Checker -->
@@ -635,8 +666,8 @@
           <div class="form-group">
             <label for="orderPaymentMethod">Payment Mode *</label>
             <select id="orderPaymentMethod">
-              <option value="upi">UPI (GPay / PhonePe / Paytm / QR)</option>
-              <option value="cod">Cash on Delivery (COD)</option>
+              <option value="upi">UPI (GPay / PhonePe / Paytm / Any UPI ID)</option>
+              <option value="cod">Cash on Delivery (COD) - Pay on Arrival</option>
               <option value="card">Debit / Credit Card / NetBanking</option>
             </select>
           </div>
@@ -646,6 +677,11 @@
               <input type="text" id="orderPromoInput" placeholder="e.g. VYRATEEN35" value="VYRATEEN35" style="text-transform: uppercase;">
               <button type="button" id="orderApplyCouponBtn" class="btn btn-glass" style="padding: 0.4rem 0.75rem; font-size: 0.75rem;">Apply</button>
             </div>
+            <div class="quick-coupon-pills">
+              <button type="button" class="coupon-chip" data-apply="VYRATEEN35">VYRATEEN35 (-35%)</button>
+              <button type="button" class="coupon-chip" data-apply="FREEDELIVERY">FREEDELIVERY</button>
+              <button type="button" class="coupon-chip" data-apply="VYRA500">VYRA500 (-₹500)</button>
+            </div>
           </div>
         </div>
 
@@ -653,11 +689,11 @@
         <div class="order-checkout-summary">
           <div class="price-breakdown" style="margin-bottom: 0;">
             <div class="summary-line">
-              <span>Item Price (<span id="modalQtyDisplay">1</span>x)</span>
+              <span>Items Subtotal (<span id="modalQtyDisplay">1</span> items)</span>
               <span id="modalItemSubtotal">₹1,499</span>
             </div>
             <div class="summary-line text-green" id="modalDiscountLine">
-              <span>Teen Promo Discount (VYRATEEN35 -35%)</span>
+              <span>Teen Promo Discount (<span id="modalPromoCodeLabel">VYRATEEN35</span>)</span>
               <span id="modalDiscountDisplay">-₹525</span>
             </div>
             <div class="summary-line">
@@ -701,9 +737,9 @@
       <div class="footer-brand">
         <a href="#" class="logo">
           <span class="logo-badge">VYRA</span>
-          <span class="logo-text">VYRA <span>BY VIPUL</span></span>
+          <span class="logo-text">VYRA <span>TEEN FITS</span></span>
         </a>
-        <p>The anti-fast-fashion brand built by Vipul for Indian high school & college budgets. Heavier GSM, premium fabrics, zero gatekeeping.</p>
+        <p>The anti-fast-fashion brand engineered for Indian teenagers, high school & college budgets. Heavier GSM, premium fabrics, zero gatekeeping.</p>
         <div class="social-links">
           <a href="#" title="Instagram"><i data-lucide="instagram"></i></a>
           <a href="#" title="Discord"><i data-lucide="message-square"></i></a>
@@ -736,7 +772,7 @@
     </div>
     <div class="footer-bottom">
       <div class="container bottom-row">
-        <p>© 2026 VYRA BY VIPUL. All rights reserved. Crafted with ⚡ for the next gen.</p>
+        <p>© 2026 VYRA. All rights reserved. High-quality teen streetwear in Indian Rupees (₹).</p>
         <p class="status-indicator"><span class="status-dot"></span> All Systems Operational • Real-time Sync</p>
       </div>
     </div>

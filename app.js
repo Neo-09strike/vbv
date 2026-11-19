@@ -1,6 +1,6 @@
 /**
- * VYRA BY VIPUL - Web Application Architecture
- * Built by 9-Year Senior Software Engineer for Teenagers & College Students
+ * VYRA - Web Application Architecture
+ * Built by 15-Year Senior Software Engineer for Teenagers & College Students
  * Pure Clothing Fashion, Pincode Delivery Availability Checker & Modern White GUI
  */
 
@@ -753,7 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // =================================================================
-// 7. PLACE ORDER & PINCODE DELIVERY CHECKER MODAL
+// 7. PLACE ORDER & PINCODE DELIVERY CHECKER MODAL (FULL ORDER LIST)
 // =================================================================
 function initOrderModal() {
   const modal = document.getElementById('orderModal');
@@ -771,191 +771,173 @@ function initOrderModal() {
     setTimeout(() => { modal.style.display = 'none'; }, 200);
   };
 
-  closeBtn.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
 
   // Check Pincode button handler
-  checkPincodeBtn.addEventListener('click', () => {
-    const pin = pincodeInput.value.trim();
-    state.orderModalPincode = pin;
-    const result = verifyPincode(pin);
+  if (checkPincodeBtn) {
+    checkPincodeBtn.addEventListener('click', () => {
+      const pin = pincodeInput.value.trim();
+      state.orderModalPincode = pin;
+      const result = verifyPincode(pin);
 
-    if (!result.valid) {
-      pincodeStatusBox.className = 'pincode-status-box unserviceable';
-      pincodeStatusBox.innerHTML = `<i data-lucide="alert-circle"></i> <span>${result.message}</span>`;
-      pincodeStatusBox.style.display = 'flex';
+      if (!result.valid) {
+        pincodeStatusBox.className = 'pincode-status-box unserviceable';
+        pincodeStatusBox.innerHTML = `<i data-lucide="alert-circle"></i> <span>${result.message}</span>`;
+        pincodeStatusBox.style.display = 'flex';
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      if (result.serviceable) {
+        pincodeStatusBox.className = 'pincode-status-box serviceable';
+        pincodeStatusBox.innerHTML = `<i data-lucide="check-circle-2"></i> <span>${result.message}</span>`;
+        pincodeStatusBox.style.display = 'flex';
+        showToast(`Delivery available to PIN ${pin}!`, 'truck');
+      } else {
+        pincodeStatusBox.className = 'pincode-status-box unserviceable';
+        pincodeStatusBox.innerHTML = `<i data-lucide="x-circle"></i> <span>${result.message}</span>`;
+        pincodeStatusBox.style.display = 'flex';
+      }
+
       if (window.lucide) lucide.createIcons();
-      return;
-    }
+    });
+  }
 
-    if (result.serviceable) {
-      pincodeStatusBox.className = 'pincode-status-box serviceable';
-      pincodeStatusBox.innerHTML = `<i data-lucide="check-circle-2"></i> <span>${result.message}</span>`;
-      pincodeStatusBox.style.display = 'flex';
-      showToast(`Delivery available to PIN ${pin}!`, 'truck');
-    } else {
-      pincodeStatusBox.className = 'pincode-status-box unserviceable';
-      pincodeStatusBox.innerHTML = `<i data-lucide="x-circle"></i> <span>${result.message}</span>`;
-      pincodeStatusBox.style.display = 'flex';
-    }
-
-    if (window.lucide) lucide.createIcons();
+  // Quick coupon chips inside Order Modal
+  document.querySelectorAll('.coupon-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const code = chip.dataset.apply;
+      if (COUPONS[code]) {
+        state.appliedCoupon = COUPONS[code];
+        if (promoInput) promoInput.value = code;
+        showToast(`Applied coupon: ${COUPONS[code].label}!`, 'sparkles');
+        updateOrderModalCalculations();
+      }
+    });
   });
 
   // Apply Coupon inside Order Modal
-  applyPromoBtn.addEventListener('click', () => {
-    const code = promoInput.value.trim().toUpperCase();
-    if (COUPONS[code]) {
-      state.appliedCoupon = COUPONS[code];
-      showToast(`Applied ${COUPONS[code].label}!`, 'sparkles');
-      updateOrderModalCalculations();
-    } else {
-      showToast('Invalid coupon code! Try VYRATEEN35 or FREEDELIVERY', 'alert-circle');
-    }
-  });
+  if (applyPromoBtn) {
+    applyPromoBtn.addEventListener('click', () => {
+      const code = promoInput.value.trim().toUpperCase();
+      if (COUPONS[code]) {
+        state.appliedCoupon = COUPONS[code];
+        showToast(`Applied ${COUPONS[code].label}!`, 'sparkles');
+        updateOrderModalCalculations();
+      } else {
+        showToast('Invalid coupon code! Try VYRATEEN35 or FREEDELIVERY', 'alert-circle');
+      }
+    });
+  }
 
-  // Form submit -> Confirm & Place Order!
-  orderForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!state.orderModalProduct) return;
+  // Form submit -> Confirm & Place Order with FULL ORDER LIST!
+  if (orderForm) {
+    orderForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (state.cart.length === 0) {
+        showToast('Your order list is empty! Please add items before placing an order.', 'alert-triangle');
+        return;
+      }
 
-    const pin = pincodeInput.value.trim();
-    const pinCheck = verifyPincode(pin);
+      const pin = pincodeInput.value.trim();
+      const pinCheck = verifyPincode(pin);
 
-    if (!pinCheck.valid || !pinCheck.serviceable) {
-      showToast('Please enter a serviceable 6-digit delivery PIN code.', 'alert-triangle');
-      pincodeInput.focus();
-      return;
-    }
+      if (!pinCheck.valid || !pinCheck.serviceable) {
+        showToast('Please enter a serviceable 6-digit delivery PIN code.', 'alert-triangle');
+        pincodeInput.focus();
+        return;
+      }
 
-    const customerName = document.getElementById('orderCustomerName').value.trim();
-    const customerPhone = document.getElementById('orderCustomerPhone').value.trim();
-    const customerAddress = document.getElementById('orderCustomerAddress').value.trim();
-    const paymentMode = document.getElementById('orderPaymentMethod').value.toUpperCase();
+      const customerName = document.getElementById('orderCustomerName').value.trim();
+      const customerPhone = document.getElementById('orderCustomerPhone').value.trim();
+      const customerAddress = document.getElementById('orderCustomerAddress').value.trim();
+      const paymentMode = document.getElementById('orderPaymentMethod').value.toUpperCase();
 
-    // Generate real-time Order ID
-    const randomNum = Math.floor(10000 + Math.random() * 90000);
-    const orderId = `#VV-${randomNum}`;
+      // Generate real-time Order ID
+      const randomNum = Math.floor(10000 + Math.random() * 90000);
+      const orderId = `#VYRA-${randomNum}`;
 
-    const subtotal = state.orderModalProduct.price * state.orderModalQty;
-    let discount = 0;
-    if (state.appliedCoupon && state.appliedCoupon.type === 'percent') {
-      discount = (subtotal * state.appliedCoupon.discountPercent) / 100;
-    }
-    const finalAmount = Math.max(0, subtotal - discount);
+      const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      let discount = 0;
+      let shipping = subtotal >= 999 || subtotal === 0 ? 0 : 99;
+      if (state.appliedCoupon && state.appliedCoupon.type === 'percent') {
+        discount = (subtotal * state.appliedCoupon.discountPercent) / 100;
+      } else if (state.appliedCoupon && state.appliedCoupon.type === 'flat') {
+        discount = Math.min(subtotal, state.appliedCoupon.discountFlat);
+      } else if (state.appliedCoupon && state.appliedCoupon.type === 'shipping') {
+        shipping = 0;
+      }
+      const finalAmount = Math.max(0, subtotal - discount + (subtotal > 0 ? shipping : 0));
 
-    // Add to Tracking Database
-    TRACKING_DATA[orderId] = {
-      orderId: orderId,
-      date: 'Just now',
-      eta: `Expected in ${pinCheck.days || '2-3 business days'} to PIN ${pin}`,
-      status: `Order Placed (${paymentMode}) • Quality Check In-Progress`,
-      step: 0,
-      carrier: 'BlueDart Express Air VIP',
-      address: `${customerAddress}, PIN: ${pin} (Ph: ${customerPhone})`,
-      items: [
-        {
-          title: state.orderModalProduct.title,
-          size: state.orderModalSize,
-          qty: state.orderModalQty,
-          price: state.orderModalProduct.price
-        }
-      ],
-      total: formatINR(finalAmount)
-    };
+      // Capture snapshot of all ordered items
+      const orderItems = state.cart.map(item => ({
+        title: item.title,
+        size: item.size,
+        qty: item.qty,
+        price: item.price,
+        image: item.image
+      }));
 
-    state.activeTrackingOrder = TRACKING_DATA[orderId];
+      // Add to Tracking Database
+      TRACKING_DATA[orderId] = {
+        orderId: orderId,
+        date: 'Just now',
+        eta: `Expected in ${pinCheck.days || '2-3 business days'} to PIN ${pin}`,
+        status: `Order Placed (${paymentMode}) • Quality Check In-Progress`,
+        step: 0,
+        carrier: 'BlueDart Express Air VIP',
+        address: `${customerAddress}, PIN: ${pin} (Ph: ${customerPhone})`,
+        items: orderItems,
+        total: formatINR(finalAmount)
+      };
 
-    // Add also to cart / order history
-    state.addToCart(state.orderModalProduct, state.orderModalSize);
+      state.activeTrackingOrder = TRACKING_DATA[orderId];
 
-    closeModal();
-    showToast(`Order Confirmed! Tracking ID: ${orderId}`, 'package-check');
+      // Clear the active cart and persist
+      state.cart = [];
+      state.saveCart();
+      renderCart();
 
-    // Smoothly redirect straight into the Live Order Tracker!
-    setTimeout(() => {
-      const trackerNavBtn = document.querySelector('[data-view="tracker"]');
-      if (trackerNavBtn) trackerNavBtn.click();
+      closeModal();
+      showToast(`🎉 Order Placed Successfully! Tracking ID: ${orderId}`, 'package-check');
 
-      const trackingInput = document.getElementById('trackingCodeInput');
-      if (trackingInput) trackingInput.value = orderId;
-      renderTrackerResult(state.activeTrackingOrder);
-    }, 450);
-  });
+      // Smoothly redirect straight into the Live Order Tracker!
+      setTimeout(() => {
+        const trackerNavBtn = document.querySelector('[data-view="tracker"]');
+        if (trackerNavBtn) trackerNavBtn.click();
+
+        const trackingInput = document.getElementById('trackingCodeInput');
+        if (trackingInput) trackingInput.value = orderId;
+        renderTrackerResult(state.activeTrackingOrder);
+      }, 450);
+    });
+  }
 }
 
-function openOrderModal(product, preferredSize = null) {
-  state.orderModalProduct = product;
-  state.orderModalSize = preferredSize || product.sizes[0];
-  state.orderModalQty = 1;
+function openOrderModal(product = null, preferredSize = null) {
+  // If product is provided, add it directly to cart
+  if (product) {
+    const chosenSize = preferredSize || product.sizes[0];
+    state.addToCart(product, chosenSize);
+  }
+
+  if (state.cart.length === 0) {
+    showToast('Your bag is empty! Add fits from the home catalog.', 'alert-triangle');
+    return;
+  }
 
   const modal = document.getElementById('orderModal');
-  const preview = document.getElementById('orderProductPreview');
-
-  preview.innerHTML = `
-    <img src="${product.image}" alt="${product.title}" class="order-product-thumb">
-    <div class="order-product-details">
-      <h4>${product.title}</h4>
-      <div class="order-product-meta">
-        <span class="neon-chip">${product.gsm}</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted);"><i data-lucide="shield-check" style="width:12px; height:12px; vertical-align:middle;"></i> 100% Pre-Shrunk</span>
-      </div>
-
-      <div style="display: flex; align-items: center; gap: 0.6rem; margin-top: 0.35rem; flex-wrap: wrap;">
-        <span style="font-size: 0.775rem; font-weight: 700; color: var(--text-secondary);">Size:</span>
-        <div class="size-selector-compact" id="modalSizeRow">
-          ${product.sizes.map(sz => `
-            <button type="button" class="size-btn ${sz === state.orderModalSize ? 'active' : ''}" data-modalsize="${sz}">${sz}</button>
-          `).join('')}
-        </div>
-      </div>
-
-      <div class="order-product-controls">
-        <div style="display: flex; align-items: baseline; gap: 0.45rem;">
-          <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #09090b;">${formatINR(product.price)}</span>
-          <span style="font-family: var(--font-mono); font-size: 0.8rem; text-decoration: line-through; color: var(--text-dim);">${formatINR(product.origPrice)}</span>
-        </div>
-
-        <div class="qty-control">
-          <button type="button" class="qty-btn" id="modalQtyDec">-</button>
-          <span class="qty-number" id="modalQtyVal">1</span>
-          <button type="button" class="qty-btn" id="modalQtyInc">+</button>
-        </div>
-      </div>
-    </div>
-  `;
-
-  // Attach size and quantity handlers in preview
-  preview.querySelectorAll('[data-modalsize]').forEach(btn => {
-    btn.onclick = () => {
-      preview.querySelectorAll('[data-modalsize]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      state.orderModalSize = btn.dataset.modalsize;
-    };
-  });
-
-  document.getElementById('modalQtyDec').onclick = () => {
-    if (state.orderModalQty > 1) {
-      state.orderModalQty -= 1;
-      document.getElementById('modalQtyVal').textContent = state.orderModalQty;
-      updateOrderModalCalculations();
-    }
-  };
-
-  document.getElementById('modalQtyInc').onclick = () => {
-    state.orderModalQty += 1;
-    document.getElementById('modalQtyVal').textContent = state.orderModalQty;
-    updateOrderModalCalculations();
-  };
-
+  renderOrderModalItems();
   updateOrderModalCalculations();
 
   // Run initial pincode check on pre-filled pincode (110001)
   const pinInput = document.getElementById('deliveryPincodeInput');
   if (pinInput && pinInput.value) {
-    document.getElementById('checkPincodeBtn').click();
+    const checkBtn = document.getElementById('checkPincodeBtn');
+    if (checkBtn) checkBtn.click();
   }
 
   modal.style.display = 'flex';
@@ -963,80 +945,243 @@ function openOrderModal(product, preferredSize = null) {
   if (window.lucide) lucide.createIcons();
 }
 
-function updateOrderModalCalculations() {
-  if (!state.orderModalProduct) return;
+function renderOrderModalItems() {
+  const container = document.getElementById('modalOrderItemsList');
+  const countEl = document.getElementById('modalOrderItemsCount');
+  if (!container) return;
 
-  const subtotal = state.orderModalProduct.price * state.orderModalQty;
-  let discount = 0;
-  if (state.appliedCoupon && state.appliedCoupon.type === 'percent') {
-    discount = (subtotal * state.appliedCoupon.discountPercent) / 100;
-  } else if (state.appliedCoupon && state.appliedCoupon.type === 'flat') {
-    discount = Math.min(subtotal, state.appliedCoupon.discountFlat);
+  const totalCount = state.cart.reduce((sum, it) => sum + it.qty, 0);
+  if (countEl) countEl.textContent = totalCount;
+
+  if (state.cart.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 1.5rem; color: var(--text-muted);">
+        <i data-lucide="shopping-basket" style="width: 36px; height: 36px; margin: 0 auto 0.5rem; display: block; color: var(--text-dim);"></i>
+        <p>Your order list is currently empty. Add fresh drops from the catalog!</p>
+      </div>
+    `;
+    if (window.lucide) lucide.createIcons();
+    return;
   }
 
-  const finalTotal = Math.max(0, subtotal - discount);
+  container.innerHTML = state.cart.map((item, index) => {
+    const prod = PRODUCTS.find(p => p.id === item.id) || item;
+    const gsmBadge = prod.gsm || 'Premium Cotton';
 
-  document.getElementById('modalQtyDisplay').textContent = state.orderModalQty;
-  document.getElementById('modalItemSubtotal').textContent = formatINR(subtotal);
-  document.getElementById('modalDiscountDisplay').textContent = `-${formatINR(discount)}`;
-  document.getElementById('modalFinalTotal').textContent = formatINR(finalTotal);
-  document.getElementById('btnPayAmount').textContent = formatINR(finalTotal);
+    return `
+      <div class="checkout-order-item" data-index="${index}">
+        <img src="${item.image}" alt="${item.title}" class="checkout-item-thumb">
+        <div class="checkout-item-info">
+          <h5 class="checkout-item-title">${item.title}</h5>
+          <div class="checkout-item-meta">
+            <span class="neon-chip" style="font-size: 0.65rem; padding: 0.1rem 0.45rem;">${gsmBadge}</span>
+            <span style="font-size: 0.725rem; font-weight: 700; background: var(--bg-surface); padding: 0.1rem 0.45rem; border-radius: 4px; border: 1px solid var(--border-color);">Size: ${item.size}</span>
+          </div>
+        </div>
+        <div class="checkout-item-actions">
+          <div class="qty-control" style="transform: scale(0.9);">
+            <button type="button" class="qty-btn modal-item-dec" data-index="${index}">-</button>
+            <span class="qty-number">${item.qty}</span>
+            <button type="button" class="qty-btn modal-item-inc" data-index="${index}">+</button>
+          </div>
+          <span class="checkout-item-price">${formatINR(item.price * item.qty)}</span>
+          <button type="button" class="checkout-item-remove" data-remove-index="${index}" title="Remove item">
+            <i data-lucide="trash-2" style="width: 15px; height: 15px;"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  if (window.lucide) lucide.createIcons();
+
+  // Attach interactive events inside the checkout modal
+  container.querySelectorAll('.modal-item-dec').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.dataset.index, 10);
+      state.updateQty(idx, -1);
+      renderOrderModalItems();
+      updateOrderModalCalculations();
+    };
+  });
+
+  container.querySelectorAll('.modal-item-inc').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.dataset.index, 10);
+      state.updateQty(idx, 1);
+      renderOrderModalItems();
+      updateOrderModalCalculations();
+    };
+  });
+
+  container.querySelectorAll('[data-remove-index]').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.dataset.removeIndex, 10);
+      state.removeItem(idx);
+      renderOrderModalItems();
+      updateOrderModalCalculations();
+    };
+  });
+}
+
+function updateOrderModalCalculations() {
+  const modal = document.getElementById('orderModal');
+  if (!modal) return;
+
+  const totalQty = state.cart.reduce((sum, it) => sum + it.qty, 0);
+  const subtotal = state.cart.reduce((sum, it) => sum + (it.price * it.qty), 0);
+
+  const FREE_SHIPPING_THRESHOLD = 999;
+  let shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD || subtotal === 0 ? 0 : 99;
+
+  let discount = 0;
+  if (state.appliedCoupon) {
+    if (state.appliedCoupon.type === 'percent') {
+      discount = (subtotal * state.appliedCoupon.discountPercent) / 100;
+    } else if (state.appliedCoupon.type === 'flat') {
+      discount = Math.min(subtotal, state.appliedCoupon.discountFlat);
+    } else if (state.appliedCoupon.type === 'shipping') {
+      shippingCost = 0;
+    }
+  }
+
+  const finalTotal = Math.max(0, subtotal - discount + (subtotal > 0 ? shippingCost : 0));
+
+  const modalQtyDisplay = document.getElementById('modalQtyDisplay');
+  const modalItemSubtotal = document.getElementById('modalItemSubtotal');
+  const modalDiscountDisplay = document.getElementById('modalDiscountDisplay');
+  const modalDiscountLine = document.getElementById('modalDiscountLine');
+  const modalPromoCodeLabel = document.getElementById('modalPromoCodeLabel');
+  const modalShippingDisplay = document.getElementById('modalShippingDisplay');
+  const modalFinalTotal = document.getElementById('modalFinalTotal');
+  const btnPayAmount = document.getElementById('btnPayAmount');
+  const confirmBtn = document.getElementById('confirmOrderSubmitBtn');
+
+  if (modalQtyDisplay) modalQtyDisplay.textContent = totalQty;
+  if (modalItemSubtotal) modalItemSubtotal.textContent = formatINR(subtotal);
+  if (modalDiscountDisplay) modalDiscountDisplay.textContent = `-${formatINR(discount)}`;
+  if (modalDiscountLine) modalDiscountLine.style.display = discount > 0 ? 'flex' : 'none';
+  if (modalPromoCodeLabel && state.appliedCoupon) modalPromoCodeLabel.textContent = state.appliedCoupon.label;
+  if (modalShippingDisplay) modalShippingDisplay.textContent = shippingCost === 0 ? 'FREE' : formatINR(shippingCost);
+  if (modalFinalTotal) modalFinalTotal.textContent = formatINR(finalTotal);
+  if (btnPayAmount) btnPayAmount.textContent = formatINR(finalTotal);
+
+  if (confirmBtn) {
+    confirmBtn.disabled = state.cart.length === 0;
+    confirmBtn.style.opacity = state.cart.length === 0 ? '0.5' : '1';
+  }
 }
 
 // =================================================================
-// 8. POP-UP MODAL (LATEST OFFERS ON OPEN)
+// 8. POP-UP MODAL (LATEST OFFERS ON OPEN - Ultra-Minimized & Dockable)
 // =================================================================
 function initOfferPopup() {
   const modal = document.getElementById('offersPopupModal');
   const closeBtn = document.getElementById('closeOffersPopup');
-  const skipBtn = document.getElementById('popupSkipBtn');
+  const minimizeBtn = document.getElementById('minimizeOffersPopup');
+  const minimizedPill = document.getElementById('minimizedOffersPill');
   const copyBtn = document.getElementById('popupCopyBtn');
   const claimBtn = document.getElementById('popupClaimAndShopBtn');
+  const goOffersBtn = document.getElementById('popupGoOffersBtn');
   const openOffersBtn = document.getElementById('openOffersBtn');
   const heroClaimBtn = document.getElementById('heroClaimOfferBtn');
+  const closeAnnouncementBtn = document.getElementById('closeAnnouncementBtn');
+  const announcementBar = document.getElementById('announcementBar');
 
   const closeModal = () => {
     modal.classList.remove('active');
   };
 
-  closeBtn.addEventListener('click', closeModal);
-  skipBtn.addEventListener('click', closeModal);
+  const minimizeModal = () => {
+    closeModal();
+    if (minimizedPill) {
+      minimizedPill.style.display = 'flex';
+      if (window.lucide) lucide.createIcons();
+      showToast('Offers minimized! Tap the bottom-left pill anytime to expand.', 'info');
+    }
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (minimizeBtn) minimizeBtn.addEventListener('click', minimizeModal);
+
+  if (minimizedPill) {
+    minimizedPill.addEventListener('click', () => {
+      minimizedPill.style.display = 'none';
+      openPopup();
+    });
+  }
 
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
 
-  if (openOffersBtn) openOffersBtn.addEventListener('click', openPopup);
-  if (heroClaimBtn) heroClaimBtn.addEventListener('click', openPopup);
-
-  copyBtn.addEventListener('click', () => {
-    const code = document.getElementById('popupPromoCode').innerText;
-    navigator.clipboard.writeText(code).then(() => {
-      copyBtn.innerHTML = `<i data-lucide="check"></i> Copied!`;
-      lucide.createIcons();
-      showToast(`Promo Code ${code} copied!`, 'check-circle');
-      setTimeout(() => {
-        copyBtn.innerHTML = `<i data-lucide="copy"></i> Copy Code`;
-        lucide.createIcons();
-      }, 2000);
+  if (openOffersBtn) {
+    openOffersBtn.addEventListener('click', () => {
+      if (minimizedPill) minimizedPill.style.display = 'none';
+      openPopup();
     });
-  });
+  }
 
-  claimBtn.addEventListener('click', () => {
-    state.appliedCoupon = COUPONS['VYRATEEN35'];
-    closeModal();
-    showToast('Code VYRATEEN35 applied! 35% discount active.', 'sparkles');
-    renderCart();
-    
-    const catalogEl = document.getElementById('catalog');
-    if (catalogEl) {
-      catalogEl.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+  if (heroClaimBtn) {
+    heroClaimBtn.addEventListener('click', () => {
+      if (minimizedPill) minimizedPill.style.display = 'none';
+      openPopup();
+    });
+  }
+
+  if (closeAnnouncementBtn && announcementBar) {
+    closeAnnouncementBtn.addEventListener('click', () => {
+      announcementBar.style.display = 'none';
+    });
+  }
+
+  if (goOffersBtn) {
+    goOffersBtn.addEventListener('click', () => {
+      closeModal();
+      if (minimizedPill) minimizedPill.style.display = 'none';
+      const offersNav = document.querySelector('[data-view="offers"]');
+      if (offersNav) offersNav.click();
+      showToast('Viewing Latest Exclusive Teen Offers & Promo Codes! 🔥', 'flame');
+    });
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const code = document.getElementById('popupPromoCode').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        copyBtn.innerHTML = `<i data-lucide="check"></i> Copied!`;
+        if (window.lucide) lucide.createIcons();
+        showToast(`Promo Code ${code} copied!`, 'check-circle');
+        setTimeout(() => {
+          copyBtn.innerHTML = `<i data-lucide="copy"></i> Copy`;
+          if (window.lucide) lucide.createIcons();
+        }, 2000);
+      });
+    });
+  }
+
+  if (claimBtn) {
+    claimBtn.addEventListener('click', () => {
+      state.appliedCoupon = COUPONS['VYRATEEN35'];
+      closeModal();
+      if (minimizedPill) minimizedPill.style.display = 'none';
+      showToast('Code VYRATEEN35 applied! 35% discount active.', 'sparkles');
+      renderCart();
+      
+      const homeNav = document.querySelector('[data-view="home"]');
+      if (homeNav) homeNav.click();
+      const catalogEl = document.getElementById('catalog');
+      if (catalogEl) {
+        catalogEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 }
 
 function openPopup() {
   const modal = document.getElementById('offersPopupModal');
+  const minimizedPill = document.getElementById('minimizedOffersPill');
+  if (minimizedPill) minimizedPill.style.display = 'none';
   if (modal) {
     modal.classList.add('active');
     if (window.lucide) lucide.createIcons();
@@ -1262,9 +1407,10 @@ function attachCardEvents() {
     });
   });
 
-  // When clicking "Add to Bag": Open the Place Order / Pincode delivery popup!
+  // When clicking "Add to Bag": Add directly to cart without interrupting shopping!
   document.querySelectorAll('[data-add-cart]').forEach(btn => {
     btn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const card = btn.closest('.product-card');
       const productId = parseInt(btn.dataset.addCart, 10);
       const product = PRODUCTS.find(p => p.id === productId);
@@ -1272,8 +1418,29 @@ function attachCardEvents() {
       const chosenSize = activeSizeBtn ? activeSizeBtn.dataset.size : product.sizes[0];
 
       if (product) {
-        // Open the dedicated Place Order Modal with Pincode checker & total breakdown
-        openOrderModal(product, chosenSize);
+        // 1. Add to reactive cart state
+        state.addToCart(product, chosenSize);
+
+        // 2. Button state visual feedback
+        const origHtml = btn.innerHTML;
+        btn.innerHTML = `<i data-lucide="check"></i> Added!`;
+        btn.classList.add('added');
+        if (window.lucide) lucide.createIcons();
+
+        // 3. Bounce cart badge
+        document.querySelectorAll('.cart-count-badge').forEach(badge => {
+          badge.classList.remove('bounce');
+          void badge.offsetWidth;
+          badge.classList.add('bounce');
+        });
+
+        setTimeout(() => {
+          btn.innerHTML = origHtml;
+          btn.classList.remove('added');
+          if (window.lucide) lucide.createIcons();
+        }, 1300);
+
+        showToast(`Added ${product.title} (Size: ${chosenSize}) to Bag! 🛍️`, 'shopping-bag');
       }
     });
   });
@@ -1293,12 +1460,40 @@ function attachCardEvents() {
     });
   });
 
-  // Hero Quick Add
+  // Hero Quick Add single product
   const heroBtn = document.querySelector('.quick-add-hero');
   if (heroBtn) {
     heroBtn.onclick = () => {
       const p = PRODUCTS.find(item => item.id === 1);
       if (p) openOrderModal(p, 'L');
+    };
+  }
+
+  // Hero Add 3-Piece Streetwear Combo to Bag in 1-Click
+  const heroComboBtn = document.getElementById('addAllHeroComboBtn');
+  if (heroComboBtn) {
+    heroComboBtn.onclick = () => {
+      const jersey = PRODUCTS.find(p => p.id === 11); // Retro Football Jersey
+      const cargo = PRODUCTS.find(p => p.id === 3);   // Tactical Parachute Cargoes
+      const tee = PRODUCTS.find(p => p.id === 2);     // Cyber-Tokyo Graphic Tee
+
+      if (jersey) state.addToCart(jersey, 'L');
+      if (cargo) state.addToCart(cargo, '32');
+      if (tee) state.addToCart(tee, 'L');
+
+      // Bounce badge
+      document.querySelectorAll('.cart-count-badge').forEach(badge => {
+        badge.classList.remove('bounce');
+        void badge.offsetWidth;
+        badge.classList.add('bounce');
+      });
+
+      showToast('🔥 Added 3-Piece Streetwear Combo to Bag (Jersey + Cargoes + Tee)!', 'sparkles');
+
+      // Open cart drawer so they can inspect or checkout
+      const cartOverlay = document.getElementById('cartDrawerOverlay');
+      if (cartOverlay) cartOverlay.classList.add('active');
+      renderCart();
     };
   }
 }
@@ -1340,9 +1535,14 @@ function openQuickView(productId) {
         </div>
       </div>
 
-      <button class="btn btn-primary btn-block btn-lg" id="qvAddToCartBtn">
-        <i data-lucide="shopping-bag"></i> Order Now (${formatINR(product.price)})
-      </button>
+      <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+        <button class="btn btn-glass btn-lg" id="qvAddBagBtn" style="flex: 1;">
+          <i data-lucide="shopping-bag"></i> Add to Bag
+        </button>
+        <button class="btn btn-primary btn-lg" id="qvAddToCartBtn" style="flex: 1.2;">
+          <i data-lucide="package-check"></i> Place Order Now
+        </button>
+      </div>
     </div>
   `;
 
@@ -1358,9 +1558,21 @@ function openQuickView(productId) {
     });
   });
 
-  document.getElementById('qvAddToCartBtn').addEventListener('click', () => {
+  const getQvSize = () => {
     const activeSize = container.querySelector('#qvSizeSelector .size-btn.active');
-    const sz = activeSize ? activeSize.dataset.size : product.sizes[0];
+    return activeSize ? activeSize.dataset.size : product.sizes[0];
+  };
+
+  document.getElementById('qvAddBagBtn').addEventListener('click', () => {
+    const sz = getQvSize();
+    state.addToCart(product, sz);
+    modal.classList.remove('active');
+    setTimeout(() => { modal.style.display = 'none'; }, 200);
+    showToast(`Added ${product.title} (${sz}) to Bag! 🛍️`, 'shopping-bag');
+  });
+
+  document.getElementById('qvAddToCartBtn').addEventListener('click', () => {
+    const sz = getQvSize();
     modal.classList.remove('active');
     setTimeout(() => { modal.style.display = 'none'; }, 200);
     openOrderModal(product, sz);
@@ -1443,14 +1655,13 @@ function initCartDrawer() {
 
   checkoutBtn.addEventListener('click', () => {
     if (state.cart.length === 0) {
-      showToast('Your bag is empty!', 'alert-triangle');
+      showToast('Your bag is empty! Add fits from the home catalog.', 'alert-triangle');
       return;
     }
 
-    // Open first item or active cart in Order Modal
+    // Open FULL ORDER LIST in Order Modal!
     closeDrawer();
-    const firstItem = PRODUCTS.find(p => p.id === state.cart[0].id) || PRODUCTS[0];
-    openOrderModal(firstItem, state.cart[0].size);
+    openOrderModal();
   });
 }
 
@@ -1521,6 +1732,8 @@ function renderCart() {
   if (discountDisplay) discountDisplay.textContent = `-${formatINR(discountAmount)}`;
   if (discountLine) discountLine.style.display = discountAmount > 0 ? 'flex' : 'none';
   if (finalTotalDisplay) finalTotalDisplay.textContent = formatINR(finalTotal);
+  const cartDrawerCheckoutTotal = document.getElementById('cartDrawerCheckoutTotal');
+  if (cartDrawerCheckoutTotal) cartDrawerCheckoutTotal.textContent = formatINR(finalTotal);
 
   if (state.cart.length === 0) {
     cartItemsList.style.display = 'none';
